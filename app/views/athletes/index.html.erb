@@ -1,0 +1,37 @@
+<h1>Listing athletes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Short name</th>
+      <th>Sex</th>
+      <th>Birthdate</th>
+      <th>Externalcode</th>
+      <th>Club</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @athletes.each do |athlete| %>
+      <tr>
+        <td><%= athlete.name %></td>
+        <td><%= athlete.short_name %></td>
+        <td><%= athlete.sex %></td>
+        <td><%= athlete.birthdate %></td>
+        <td><%= athlete.externalCode %></td>
+        <td><%= athlete.club_id %></td>
+        <td><%= link_to 'Show', athlete %></td>
+        <td><%= link_to 'Edit', edit_athlete_path(athlete) %></td>
+        <td><%= link_to 'Destroy', athlete, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Athlete', new_athlete_path %>

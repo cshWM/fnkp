@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @club.name %>
+</p>
+
+<p>
+  <strong>Short name:</strong>
+  <%= @club.short_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @club.address %>
+</p>
+
+<p>
+  <strong>Postal4:</strong>
+  <%= @club.postal4 %>
+</p>
+
+<p>
+  <strong>Postal3:</strong>
+  <%= @club.postal3 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @club.city %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @club.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @club.email %>
+</p>
+
+<p>
+  <strong>President:</strong>
+  <%= @club.president %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @club.url %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @club.user_id %>
+</p>
+
+<p>
+  <strong>Association:</strong>
+  <%= @club.association_id %>
+</p>
+
+<%= link_to 'Edit', edit_club_path(@club) %> |
+<%= link_to 'Back', clubs_path %>

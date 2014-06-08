@@ -1,0 +1,47 @@
+<h1>Listing associations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Short name</th>
+      <th>Address</th>
+      <th>Postal4</th>
+      <th>Postal3</th>
+      <th>City</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>President</th>
+      <th>Url</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @associations.each do |association| %>
+      <tr>
+        <td><%= association.name %></td>
+        <td><%= association.short_name %></td>
+        <td><%= association.address %></td>
+        <td><%= association.postal4 %></td>
+        <td><%= association.postal3 %></td>
+        <td><%= association.city %></td>
+        <td><%= association.phone %></td>
+        <td><%= association.email %></td>
+        <td><%= association.president %></td>
+        <td><%= association.url %></td>
+        <td><%= association.user_id %></td>
+        <td><%= link_to 'Show', association %></td>
+        <td><%= link_to 'Edit', edit_association_path(association) %></td>
+        <td><%= link_to 'Destroy', association, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Association', new_association_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  short_name: MyString
+  sex: MyString
+  birthdate: 2014-06-08
+  externalCode: MyString
+  club_id: 1
+
+two:
+  name: MyString
+  short_name: MyString
+  sex: MyString
+  birthdate: 2014-06-08
+  externalCode: MyString
+  club_id: 1

@@ -1,0 +1,49 @@
+<h1>Listing clubs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Short name</th>
+      <th>Address</th>
+      <th>Postal4</th>
+      <th>Postal3</th>
+      <th>City</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>President</th>
+      <th>Url</th>
+      <th>User</th>
+      <th>Association</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clubs.each do |club| %>
+      <tr>
+        <td><%= club.name %></td>
+        <td><%= club.short_name %></td>
+        <td><%= club.address %></td>
+        <td><%= club.postal4 %></td>
+        <td><%= club.postal3 %></td>
+        <td><%= club.city %></td>
+        <td><%= club.phone %></td>
+        <td><%= club.email %></td>
+        <td><%= club.president %></td>
+        <td><%= club.url %></td>
+        <td><%= club.user_id %></td>
+        <td><%= club.association_id %></td>
+        <td><%= link_to 'Show', club %></td>
+        <td><%= link_to 'Edit', edit_club_path(club) %></td>
+        <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Club', new_club_path %>
