@@ -1,26 +1,23 @@
 <% provide(:title, @user.email) %>
 
-<h1><%= @user.name %></h1>
+<%= form_for(@user) do |f| %>
+  <h1><%= @user.name %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.email %>
-</p>
+  <div class="row">
+    <div class="span6 offset3">
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+    <%= f.label :name, "Nome" %>
+    <%= f.text_field :name, :disabled => 'disabled' %>
 
-<p>
-  <strong>Tipo:</strong>
-  <%= @user.tipo %>
-</p>
+    <%= f.label :email, "Email" %>
+      <%= f.text_field :email, :disabled => 'disabled' %>
+
+      <%= f.label :tipo %>
+      <%= f.number_field :tipo, :disabled => 'disabled' %>
 
 
-<div class="row">
-  <div class="span6 offset3">
-  <%= link_to 'Editar', edit_user_path(@user), class: "btn btn-group-sm btn-info" %>
-  <%= link_to 'Voltar Atrás', users_path, class: "btn btn-group-sm btn-info" %>
+    <%= link_to 'Editar', edit_user_path(@user), class: "btn btn-group-sm btn-info" %>
+    <%= link_to 'Voltar Atrás', users_path, class: "btn btn-group-sm btn-info" %>
+    </div>
   </div>
-</div>
+<% end %>

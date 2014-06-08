@@ -9,7 +9,7 @@ describe "User pages" do
     before { visit user_path(user) }
 
     it { should have_content(user.name) }
-    it { should have_title(user.name) }
+    it { should have_title(user.email) }
   end
 
   describe "signup page" do
@@ -33,10 +33,10 @@ describe "User pages" do
 
     describe "with valid information" do
       before do
-        fill_in "Name",         with: "Example User"
+        fill_in "Nome",         with: "Example User"
         fill_in "Email",        with: "user@example.com"
         fill_in "Password",     with: "foobar"
-        fill_in "Password confirmation", with: "foobar"
+        fill_in "Confirmação de Password", with: "foobar"
         fill_in "Tipo",         with: 1
       end
 
@@ -83,11 +83,11 @@ describe "User pages" do
       let(:new_email) { "new@example.com" }
       let(:new_tipo) { 1 }
       before do
-        fill_in "Name",             with: new_name
+        fill_in "Nome",             with: new_name
         fill_in "Email",            with: new_email
         fill_in "Tipo",            with: new_tipo
         fill_in "Password",         with: user.password
-        fill_in "Password confirmation", with: user.password
+        fill_in "Confirmação de Password", with: user.password
         click_button "Gravar"
       end
 
