@@ -1,51 +1,35 @@
 require 'spec_helper'
 
-describe "StaticPages" do
+describe "Static pages" do
 
-  describe "Home Page" do
+  subject { page }
 
-#    it "should exist" do
-#      visit '/static_pages/home'
-#      response.status.should be(200)
-#    end
+  describe "Home page" do
+    before { visit root_path }
 
-    it "should have the content 'Sample App'" do
-      visit '/static_pages/home'
-      expect(page).to have_content('Sample App')
-    end
-
+    it { should have_content('FNKP') }
+    it { should have_title(full_title('')) }
+    it { should_not have_title('| Home') }
   end
 
+  describe "Help page" do
+    before { visit help_path }
 
-  describe "Help Page" do
-
-#    it "should exist" do
-#      visit '/static_pages/home'
-#      response.status.should be(200)
-#    end
-
-    it "should have the content 'Sample App'" do
-      visit '/static_pages/help'
-      expect(page).to have_content('Sample App')
-    end
-
+    it { should have_content('FNKP') }
+    it { should have_title(full_title('Ajuda')) }
   end
 
+  describe "About page" do
+    before { visit about_path }
 
-  describe "About Page" do
-
-#    it "should exist" do
-#      visit '/static_pages/home'
-#      response.status.should be(200)
-#    end
-
-    it "should have the content 'Sample App'" do
-      visit '/static_pages/about'
-      expect(page).to have_content('Sample App')
-    end
-
+    it { should have_content('FNKP') }
+    it { should have_title(full_title('Acerca')) }
   end
 
+  describe "Contact page" do
+    before { visit contact_path }
 
+    it { should have_content('FNKP') }
+    it { should have_title(full_title('Contactos')) }
+  end
 end
-
