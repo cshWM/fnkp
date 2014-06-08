@@ -19,7 +19,18 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+pt:
+  hello: "Olá Mundo!"
 
+pt:
+  activerecord:
+    errors:
+      messages:
+        blank: "tem de ser preenchido"
+        invalid: "não é válido"
+        not_a_number: "não é um número"
+        too_short: "tem de ter pelo menos %{count} caracteres"
+        too_long: "não pode ter mais de %{count} caracteres"
+        present: "é obrigatório"
+        taken: "não pode ser repetido"
 
