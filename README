@@ -1,0 +1,17 @@
+# App for operacional control of Portuguese National Karate Federation
+
+This is an application to control:
+- associations
+- clubs
+- athletes
+- coachs
+- referees
+- events
+- courses
+- certifications
+- payments
+- invoices
+
+It will not provide any support for competition operation as there are plenty good softwares, i.e. SportData.
+
+by [César Silva](http://www.facebook.com/cesarsilvaWM).
