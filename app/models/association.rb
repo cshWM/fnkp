@@ -2,6 +2,7 @@ class Association < ActiveRecord::Base
   before_save { self.email = email.downcase }
 
   has_many :clubs
+  has_many :association_fees, through => :association_fee_issues
   has_one :user
   validates :name, length: { maximum: 140 }
   validates :short_name, length: { maximum: 10 }

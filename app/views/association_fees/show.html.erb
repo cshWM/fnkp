@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @association_fee.name %>
+</p>
+
+<p>
+  <strong>Valid year:</strong>
+  <%= @association_fee.valid_year %>
+</p>
+
+<p>
+  <strong>Is total:</strong>
+  <%= @association_fee.is_total %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @association_fee.value %>
+</p>
+
+<p>
+  <strong>Valid:</strong>
+  <%= @association_fee.valid %>
+</p>
+
+<p>
+  <strong>Has many:</strong>
+  <%= @association_fee.has_many %>
+</p>
+
+<%= link_to 'Edit', edit_association_fee_path(@association_fee) %> |
+<%= link_to 'Back', association_fees_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Associationfee:</strong>
+  <%= @association_fee_issue.associationfee %>
+</p>
+
+<p>
+  <strong>Association:</strong>
+  <%= @association_fee_issue.association %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @association_fee_issue.value %>
+</p>
+
+<p>
+  <strong>Valid year:</strong>
+  <%= @association_fee_issue.valid_year %>
+</p>
+
+<%= link_to 'Edit', edit_association_fee_issue_path(@association_fee_issue) %> |
+<%= link_to 'Back', association_fee_issues_path %>

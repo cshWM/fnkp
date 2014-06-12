@@ -1,0 +1,2 @@
+module AssociationFeesHelper
+end

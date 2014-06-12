@@ -1,4 +1,12 @@
 FnkpApp::Application.routes.draw do
+  resources :association_fee_issues
+
+  resources :association_fees
+
+  resources :line_items
+
+  resources :orders
+
   root  'static_pages#home'
   match '/', to: 'static_pages#home', via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'

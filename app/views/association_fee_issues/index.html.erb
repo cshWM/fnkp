@@ -1,0 +1,33 @@
+<h1>Listing association_fee_issues</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Associationfee</th>
+      <th>Association</th>
+      <th>Value</th>
+      <th>Valid year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @association_fee_issues.each do |association_fee_issue| %>
+      <tr>
+        <td><%= association_fee_issue.associationfee %></td>
+        <td><%= association_fee_issue.association %></td>
+        <td><%= association_fee_issue.value %></td>
+        <td><%= association_fee_issue.valid_year %></td>
+        <td><%= link_to 'Show', association_fee_issue %></td>
+        <td><%= link_to 'Edit', edit_association_fee_issue_path(association_fee_issue) %></td>
+        <td><%= link_to 'Destroy', association_fee_issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Association fee issue', new_association_fee_issue_path %>
