@@ -1,61 +1,46 @@
 <%= form_for(@association) do |f| %>
-  <% if @association.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@association.errors.count, "error") %> prohibited this association from being saved:</h2>
+  <%= render 'shared/association_error_messages' %>
 
-      <ul>
-      <% @association.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="row">
+  <div class="span6 offset3">
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :short_name %><br>
+    <%= f.label :short_name, "Sigla da Associação" %>
     <%= f.text_field :short_name %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
+
+    <%= f.label :name, "Nome da Associação" %>
+    <%= f.text_field :name %>
+
+    <%= f.label :address, "Endereço" %>
     <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :postal4 %><br>
+
+    <%= f.label :postal4, "Código Postal (4)" %>
     <%= f.text_field :postal4 %>
-  </div>
-  <div class="field">
-    <%= f.label :postal3 %><br>
+
+    <%= f.label :postal3, "Código Postal (3)" %>
     <%= f.text_field :postal3 %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br>
+
+    <%= f.label :city, "Cidade" %>
     <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
+
+    <%= f.label :phone, "Telefone" %>
     <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :president %><br>
+
+    <% if @association.new_record? %>
+        <%= f.label :email, "Email" %>
+        <%= f.text_field :email %>
+    <% else %>
+        <%= f.label :email, "Email" %>
+        <%= f.text_field :email, :disabled => 'disabled' %>
+    <% end %>
+
+    <%= f.label :president, "Presidente" %>
     <%= f.text_field :president %>
-  </div>
-  <div class="field">
-    <%= f.label :url %><br>
+
+    <%= f.label :url, "Site Internet" %>
     <%= f.text_field :url %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+
+
+    <%= f.submit "Gravar", class: "btn btn-sm btn-success" %>
+    </div>
   </div>
 <% end %>

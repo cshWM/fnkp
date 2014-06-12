@@ -8,8 +8,7 @@ class User < ActiveRecord::Base
             length: { maximum: 250 },
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
-  validates :tipo, presence: true, inclusion: { in: 1..3,
-    message: "%{value} não é um valor válido" }, numericality: {only_integer: true}
+  validates :tipo, presence: true, inclusion: { in: 1..3 }, numericality: {only_integer: true}
 
   has_secure_password
   validates :password,

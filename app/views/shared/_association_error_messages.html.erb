@@ -1,0 +1,25 @@
+<% if @association.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@association.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @association.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @user and @user.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@user.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

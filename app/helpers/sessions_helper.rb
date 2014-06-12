@@ -24,6 +24,17 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def is_admin?
+    current_user.tipo == 1
+  end
+  def is_association?
+    current_user.tipo == 2
+  end
+  def is_club?
+    current_user.tipo == 3
+  end
+
+
   def sign_out
     current_user.update_attribute(:remember_token,
                                   User.digest(User.new_remember_token))

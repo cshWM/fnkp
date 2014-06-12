@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/shorelabs/font-icons-rails.git
+  revision: 19da71315862d54f766645444accd4e9f5dab6e7
+  specs:
+    font-icons-rails (0.0.5)
+      sass-rails (>= 3.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -25,6 +32,7 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    addressable (2.3.6)
     arel (4.0.2)
     bcrypt-ruby (3.1.2)
     bootstrap-sass (2.3.2.0)
@@ -148,6 +156,9 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    validate_url (0.2.2)
+      activemodel (>= 3.0.0)
+      addressable
     websocket (1.0.7)
     will_paginate (3.0.4)
     xpath (2.0.0)
@@ -164,6 +175,7 @@ DEPENDENCIES
   coffee-rails (= 4.0.1)
   factory_girl_rails (= 4.2.1)
   faker (= 1.1.2)
+  font-icons-rails!
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
   pg (= 0.15.1)
@@ -177,4 +189,5 @@ DEPENDENCIES
   sqlite3 (= 1.3.8)
   turbolinks (= 1.1.1)
   uglifier (= 2.1.1)
+  validate_url
   will_paginate (= 3.0.4)

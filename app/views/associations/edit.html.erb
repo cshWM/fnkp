@@ -1,6 +1,12 @@
-<h1>Editing association</h1>
+<% provide(:title, 'Editar Associação') %>
+
+<h1>Editar Associação</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @association %> |
-<%= link_to 'Back', associations_path %>
+<div class="row">
+  <div class="span6 offset3">
+  <%= link_to 'Ver', @association, class: "btn btn-group-sm btn-info" %>
+  <%= link_to 'Voltar Atrás', association_path, class: "btn btn-group-sm btn-info" %>
+  </div>
+</div>

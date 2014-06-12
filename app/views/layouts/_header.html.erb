@@ -7,7 +7,68 @@
           <li><%= link_to "Início", root_path %></li>
           <li><%= link_to "Ajuda", help_path %></li>
           <% if signed_in? %>
-            <li><%= link_to "Utilizadores", users_path %></li>
+
+            <% if is_admin? %>
+              <li id="fat-menu" class="dropdown">
+                <a href="/" class="dropdown-toggle" data-toggle="dropdown">
+                  Gestão<b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Utilizadores", users_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Requerimentos Pendentes", "#" %></li>
+                  <li><%= link_to "Requerimentos", "#" %></li>
+                  <li><%= link_to "Homologações Pendentes", "#" %></li>
+                  <li><%= link_to "Homologações", "#" %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Notas de pagamento", "#" %></li>
+                  <li><%= link_to "Items sem nota de pagamento", "#" %></li>
+                  <li><%= link_to "Notas de pagamento sem referência", "#" %></li>
+                  <li><%= link_to "Notas de pagamento com referência expirada", "#" %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Recibos", "#" %></li>
+                </ul>
+              </li>
+            <% end %>
+
+            <li id="fat-menu" class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown">
+                Associações<b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Associações", associations_path %></li>
+                <li><%= link_to "Clubes", clubs_path %></li>
+                <li><%= link_to "Atletas", athletes_path %></li>
+                <li><%= link_to "Treinadores", "#" %></li>
+                <li><%= link_to "Árbitros", "#" %></li>
+              </ul>
+            </li>
+
+            <li id="fat-menu" class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown">
+                Competição <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Nova competição", "#"%></li>
+                <li><%= link_to "Competições", "#"%></li>
+                <li class="divider"></li>
+                <li><%= link_to "Sportdata", "http://www.sportdata.org/karate/"%></li>
+              </ul>
+            </li>
+
+            <li id="fat-menu" class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown">
+                Formação <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Novo Curso", "#"%></li>
+                <li><%= link_to "Cursos", "#"%></li>
+                <li class="divider"></li>
+                <li><%= link_to "Moodle", "http://moodle.fnkp.pt/moodle/"%></li>
+              </ul>
+            </li>
+
+
             <li id="fat-menu" class="dropdown">
               <a href="/" class="dropdown-toggle" data-toggle="dropdown">
                 Perfil <b class="caret"></b>

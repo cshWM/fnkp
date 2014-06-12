@@ -33,4 +33,15 @@ pt:
         too_long: "não pode ter mais de %{count} caracteres"
         present: "é obrigatório"
         taken: "não pode ser repetido"
+        inclusion: "não está incluído na lista possível"
+        exclusion: "não é um valor possível"
+        record_invalid: "registo inválido"
 
+  will_paginate:
+    page_gap: "&hellip;"
+    previous_label: "Anterior"
+  #      previous_label: "<button type='button' class='btn btn-default btn-lg'><span class='glyphicon glyphicon-chevron-right'></span></button>"
+    next_label: "Seguinte"
+
+  UrlValidator:
+    is_not_a_valid_url: "O endereço não é válido"

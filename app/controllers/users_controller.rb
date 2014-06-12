@@ -69,17 +69,19 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
+    @association = Association.find_by user_id: @user.id
+
+    unless @association
+      @user.destroy
+      flash[:success] = "Utilizador removido com sucesso."
+      redirect_to users_url
+    else
+      flash[:error] = "O utilizador tem uma associação associada, pelo que não pode ser removido."
+      redirect_to users_url
     end
   end
 
 
-  def is_admin
-    @user.tipo = 1
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -95,21 +97,12 @@ class UsersController < ApplicationController
 
     # Before filters
 
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Por favor autentique-se"
-      end
-    end
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      redirect_to(root_url) unless current_user?(@user) or is_admin?
     end
 
-    def admin_user
-      redirect_to(root_url) unless current_user.tipo == 1
-    end
 
 end
 

@@ -34,7 +34,7 @@ describe "Authentication" do
         click_button "Entrar!"
       end
 
-      it { should have_title(user.name) }
+      it { should have_title(user.email) }
       it { should have_link('Perfil',     href: user_path(user)) }
       it { should have_link('Sair',    href: signout_path) }
       it { should_not have_link('Entrar!', href: signin_path) }

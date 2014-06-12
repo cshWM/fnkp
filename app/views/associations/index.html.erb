@@ -1,21 +1,11 @@
-<h1>Listing associations</h1>
+<% provide(:title, 'Associações') %>
+<h1>Associações</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Short name</th>
-      <th>Address</th>
-      <th>Postal4</th>
-      <th>Postal3</th>
-      <th>City</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th>President</th>
-      <th>Url</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
+      <th>Sigla</th>
+      <th>Nome</th>
       <th></th>
     </tr>
   </thead>
@@ -23,25 +13,21 @@
   <tbody>
     <% @associations.each do |association| %>
       <tr>
-        <td><%= association.name %></td>
         <td><%= association.short_name %></td>
-        <td><%= association.address %></td>
-        <td><%= association.postal4 %></td>
-        <td><%= association.postal3 %></td>
-        <td><%= association.city %></td>
-        <td><%= association.phone %></td>
-        <td><%= association.email %></td>
-        <td><%= association.president %></td>
-        <td><%= association.url %></td>
-        <td><%= association.user_id %></td>
-        <td><%= link_to 'Show', association %></td>
-        <td><%= link_to 'Edit', edit_association_path(association) %></td>
-        <td><%= link_to 'Destroy', association, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= association.name %></td>
+        <td style="text-align: right">
+          <%= link_to 'Ver', association, class: "btn btn-group-sm btn-info" %>
+          <%= link_to 'Editar', edit_association_path(association), class: "btn btn-group-sm btn-success" %>
+          <%= link_to 'Apagar', association, method: :delete, data: { confirm: 'Tem a certeza?' },
+                        class: "btn btn-group-sm btn-danger" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<%= will_paginate %>
+
 <br>
 
-<%= link_to 'New Association', new_association_path %>
+<%= link_to 'Nova Associação', new_association_path, class: "btn btn-group-sm btn-success" %>
