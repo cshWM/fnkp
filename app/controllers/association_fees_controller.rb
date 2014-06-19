@@ -1,5 +1,7 @@
 class AssociationFeesController < ApplicationController
   before_action :set_association_fee, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user,     only: [:new, :index, :show, :edit, :update, :destroy]
+
 
   # GET /association_fees
   # GET /association_fees.json
@@ -28,7 +30,7 @@ class AssociationFeesController < ApplicationController
 
     respond_to do |format|
       if @association_fee.save
-        format.html { redirect_to @association_fee, notice: 'Association fee was successfully created.' }
+        format.html { redirect_to @association_fee, notice: 'Quota de Associação criada com sucesso' }
         format.json { render action: 'show', status: :created, location: @association_fee }
       else
         format.html { render action: 'new' }
@@ -42,7 +44,7 @@ class AssociationFeesController < ApplicationController
   def update
     respond_to do |format|
       if @association_fee.update(association_fee_params)
-        format.html { redirect_to @association_fee, notice: 'Association fee was successfully updated.' }
+        format.html { redirect_to @association_fee, notice: 'Quota de Associação actualizada com sucesso' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -69,6 +71,6 @@ class AssociationFeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def association_fee_params
-      params.require(:association_fee).permit(:name, :valid_year, :is_total, :value, :valid, :has_many)
+      params.require(:association_fee).permit(:name, :valid_year, :is_total, :value, :valid)
     end
 end

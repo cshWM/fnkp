@@ -1,15 +1,13 @@
-<h1>Listing orders</h1>
+<% provide(:title, 'Notas de Encomenda') %>
+<h1>Notas de Encomenda</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Total value</th>
-      <th>State</th>
-      <th>State date</th>
-      <th>Has many</th>
-      <th></th>
-      <th></th>
+      <th>Designação</th>
+      <th>Total</th>
+      <th>Estado</th>
+      <th>Data</th>
       <th></th>
     </tr>
   </thead>
@@ -21,15 +19,26 @@
         <td><%= order.total_value %></td>
         <td><%= order.state %></td>
         <td><%= order.state_date %></td>
-        <td><%= order.has_many %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td>
+          <%= link_to 'Ver', order, class: "btn btn-group-sm btn-info" %>
+          <% if is_admin? %>
+          <%= link_to 'Editar', edit_order_path(order), class: "btn btn-group-sm btn-success" %>
+          <% end %>
+          <% # CSH falta colocar a associação das notas a associa/clubes e validação de só deixar ver /edit as proprias %>
+          <% if is_admin?  %>
+          <%= link_to 'Apagar', order, method: :delete, data: { confirm: 'Tem a certeza?' },
+                  class: "btn btn-group-sm btn-danger" %>
+          <% end %>
+        </td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<%= will_paginate %>
+
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<%= link_to 'Nova Nota de Pagamento', new_order_path, class: "btn btn-group-sm btn-success" %>

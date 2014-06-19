@@ -24,6 +24,10 @@ pt:
 
 pt:
   activerecord:
+    attributes:
+      line_item:
+        name: "Designação"
+        value: "Valor"
     errors:
       messages:
         blank: "tem de ser preenchido"
@@ -36,6 +40,8 @@ pt:
         inclusion: "não está incluído na lista possível"
         exclusion: "não é um valor possível"
         record_invalid: "registo inválido"
+        less_than: "não pode ser superior a %{count}"
+        more_than: "não pode ser inferior a %{count}"
 
   will_paginate:
     page_gap: "&hellip;"
@@ -45,3 +51,9 @@ pt:
 
   UrlValidator:
     is_not_a_valid_url: "O endereço não é válido"
+    message: "asdasdasd"
+
+  date:
+    order: "state_date"
+
+

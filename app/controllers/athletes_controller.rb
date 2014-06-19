@@ -1,5 +1,7 @@
 class AthletesController < ApplicationController
   before_action :set_athlete, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user,     only: [:new, :index, :show, :edit, :update, :destroy]
+
 
   # GET /athletes
   # GET /athletes.json

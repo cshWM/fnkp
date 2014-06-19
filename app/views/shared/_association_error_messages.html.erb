@@ -1,4 +1,4 @@
-<% if @association.errors.any? %>
+<% if @association.present? and @association.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
       Contém <%= pluralize(@association.errors.count, "erro") %>.
@@ -11,7 +11,7 @@
   </div>
 <% end %>
 
-<% if @user and @user.errors.any? %>
+<% if @user.present? and @user.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
       Contém <%= pluralize(@user.errors.count, "erro") %>.

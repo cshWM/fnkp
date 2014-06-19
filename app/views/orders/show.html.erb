@@ -1,29 +1,32 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "Ordem #{@order.id}" ) %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @order.name %>
-</p>
+<%= form_for(@order, :html => { :class => "form-horizontal" }) do |f| %>
+  <%= render 'shared/order_error_messages' %>
 
-<p>
-  <strong>Total value:</strong>
-  <%= @order.total_value %>
-</p>
+  <h1><%= @order.name %></h1>
 
-<p>
-  <strong>State:</strong>
-  <%= @order.state %>
-</p>
+  <div class="row">
+  <div class="span6 offset3">
 
-<p>
-  <strong>State date:</strong>
-  <%= @order.state_date %>
-</p>
+    <%= f.label :name, "Designação" %>
+    <%= f.text_field :name, :disabled => 'disabled' %>
 
-<p>
-  <strong>Has many:</strong>
-  <%= @order.has_many %>
-</p>
+    <%= f.label :total_value, "Total" %>
+    <%= f.text_field :total_value, :disabled => 'disabled' %>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+    <%= f.label :state, "Estado" %>
+    <%= f.text_field :state, :disabled => 'disabled' %>
+
+    <%= f.label :state_date, "Em" %>
+    <%= f.text_field :state_date, :disabled => 'disabled' %>
+
+    <br/>
+
+    <%= link_to 'Editar', edit_order_path(@order), class: "btn btn-group-sm btn-info" %>
+    <%= link_to 'Voltar Atrás', orders_path, class: "btn btn-group-sm btn-info" %>
+    </div>
+  </div>
+<% end %>
+
+
+<%= render 'listinha' %>

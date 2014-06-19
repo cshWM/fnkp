@@ -1,5 +1,7 @@
 class AssociationFeeIssuesController < ApplicationController
   before_action :set_association_fee_issue, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user,     only: [:new, :index, :show, :edit, :update, :destroy]
+
 
   # GET /association_fee_issues
   # GET /association_fee_issues.json

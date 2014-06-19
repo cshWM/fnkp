@@ -1,0 +1,36 @@
+<h2>Linhas de Pagamento</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Designação</th>
+      <th>Valor</th>
+      <th>Estado</th>
+      <th>Data</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order.line_items.each do |line_item| %>
+      <tr>
+        <td><%= line_item.name %></td>
+        <td><%= line_item.value %></td>
+        <td><%= line_item.state %></td>
+        <td><%= line_item.state_date %></td>
+
+        <td>
+          <%= link_to 'Ver', line_item, class: "btn btn-group-sm btn-info" %>
+          <%= link_to 'Editar', edit_line_item_path(line_item), class: "btn btn-group-sm btn-success" %>
+          <%= link_to 'Apagar', line_item, method: :delete, data: { confirm: 'Tem a certeza?' },
+                  class: "btn btn-group-sm btn-danger" %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova linha de pagamento', "#{new_line_item_path}?order=#{@order.id}", class: "btn btn-group-sm btn-success" %>

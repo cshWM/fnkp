@@ -2,18 +2,27 @@ class AssociationsController < ApplicationController
 
   before_action :set_association, only: [:show, :edit, :update, :destroy]
   before_action :signed_in_user,     only: [:new, :index, :show, :edit, :update, :destroy]
-  before_action :admin_user,     only: [:new, :index, :show, :edit, :update, :destroy]
+  before_action :admin_user,     only: [:new, :destroy]
 
 
   # GET /associations
   # GET /associations.json
+  # os admins podem ver a lista de associações
+  # as associações são encaminhadas para o seu proprio view
   def index
-    @associations = Association.paginate(page: params[:page], :per_page => 5)
+    if is_admin?
+      @associations = Association.paginate(page: params[:page], :per_page => 5)
+    else
+      redirect_to association_url( Association.find_by( user_id: current_user.id) )
+    end
   end
 
   # GET /associations/1
   # GET /associations/1.json
   def show
+    unless is_admin?
+      @association = Association.find_by( user_id: current_user.id )
+    end
   end
 
   # GET /associations/new
@@ -23,6 +32,7 @@ class AssociationsController < ApplicationController
 
   # GET /associations/1/edit
   def edit
+#    @association = current_user.associations.find(params[:id]) unless is_admin?
   end
 
   # POST /associations
@@ -83,7 +93,7 @@ class AssociationsController < ApplicationController
       end
     rescue ActiveRecord::RecordNotFound
       @association.destroy
-      flash[:success] = "Associação removida com sucesso."
+      flash[:success] = "O registo não existia para remover."
       redirect_to associations_url
     end
   end

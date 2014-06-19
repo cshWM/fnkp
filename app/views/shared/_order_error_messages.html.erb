@@ -1,0 +1,25 @@
+<% if @order.present? and @order.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@order.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @order.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @line_item.present? and @line_item.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@line_item.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @line_item.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
