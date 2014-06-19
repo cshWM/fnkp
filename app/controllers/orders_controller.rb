@@ -99,4 +99,40 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:name, :state)
     end
 
+
+#  simple_invoices = @client.simplified_invoices
+#  puts simple_invoices
+#
+#  invoice = Invoicexpress::Models::SimplifiedInvoice.new(
+#    :date => Date.new(2014, 6, 19),
+#    :due_date => Date.new(2014, 6, 19),
+#    :observations=> 'new',
+#    :client => Invoicexpress::Models::Client.new(
+#      :name => "csh teste",
+#      :email=> 'cesar.silva@ckmaia.org'
+#    ),
+#    :items => [
+#      Invoicexpress::Models::Item.new(
+#        :name => "Item 6",
+#        :unit_price => 120,
+#        :quantity => 2,
+#        :unit => "unit",
+#      ),
+#      Invoicexpress::Models::Item.new(
+#        :name => "Item AM",
+#        :unit_price => 50,
+#        :quantity => 1,
+#        :unit => "unit",
+#      )
+#    ]
+#  )
+#simple_invoice = @client.create_simplified_invoice(invoice)
+##simple_invoice = @client.simplified_invoice(1425061)
+##simple_invoice.tax_exemption="M02"
+##@client.update_simplified_invoice(simple_invoice)
+##state = Invoicexpress::Models::InvoiceState.new(
+##  :state => "finalized"
+##)
+##@client.update_simplified_invoice_state(simple_invoice.id, state)
+
 end
