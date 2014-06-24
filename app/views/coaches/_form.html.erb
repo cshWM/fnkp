@@ -1,0 +1,45 @@
+<%= form_for(@coach) do |f| %>
+  <% if @coach.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@coach.errors.count, "error") %> prohibited this coach from being saved:</h2>
+
+      <ul>
+      <% @coach.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fnkp_code %><br>
+    <%= f.text_field :fnkp_code %>
+  </div>
+  <div class="field">
+    <%= f.label :ipdj_code %><br>
+    <%= f.text_field :ipdj_code %>
+  </div>
+  <div class="field">
+    <%= f.label :official_name %><br>
+    <%= f.text_field :official_name %>
+  </div>
+  <div class="field">
+    <%= f.label :import_code %><br>
+    <%= f.text_field :import_code %>
+  </div>
+  <div class="field">
+    <%= f.label :cc_code %><br>
+    <%= f.text_field :cc_code %>
+  </div>
+  <div class="field">
+    <%= f.label :birthdate %><br>
+    <%= f.date_select :birthdate %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br>
+    <%= f.check_box :active %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

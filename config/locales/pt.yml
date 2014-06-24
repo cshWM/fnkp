@@ -28,6 +28,10 @@ pt:
       line_item:
         name: "Designação"
         value: "Valor"
+      graduation:
+        name: "Graduação"
+        order: "Ordem"
+        price: "Preço"
     errors:
       messages:
         blank: "tem de ser preenchido"

@@ -1,0 +1,24 @@
+<%= form_for(@municipality) do |f| %>
+
+  <%= render 'shared/regions_error_messages' %>
+
+  <div class="row">
+    <div class="span6 offset3">
+
+      <%= f.label :name, "Concelho" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :district_id, "Distrito" %>
+      <%= f.collection_select :district_id, District.all, :id, :name, :selected => (@municipality.district.present? and @municipality.district.id) %>
+
+      <%= f.label :active, "Activo" %>
+      <%= f.check_box :active %>
+
+      <br/><br/>
+
+      <%= f.submit "Gravar", class: "btn btn-sm btn-success" %>
+    </div>
+  </div>
+
+
+<% end %>

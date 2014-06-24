@@ -1,0 +1,31 @@
+<h1>Listing coach_paths</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date acomplished</th>
+      <th>Coach category</th>
+      <th>Coach</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coach_paths.each do |coach_path| %>
+      <tr>
+        <td><%= coach_path.date_acomplished %></td>
+        <td><%= coach_path.coach_category %></td>
+        <td><%= coach_path.coach %></td>
+        <td><%= link_to 'Show', coach_path %></td>
+        <td><%= link_to 'Edit', edit_coach_path_path(coach_path) %></td>
+        <td><%= link_to 'Destroy', coach_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Coach path', new_coach_path_path %>

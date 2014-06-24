@@ -1,0 +1,2 @@
+module CoachPathsHelper
+end

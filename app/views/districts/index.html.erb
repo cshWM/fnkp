@@ -1,0 +1,36 @@
+<% provide(:title, 'Distritos') %>
+<h1>Distritos</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Distrito</th>
+      <th>Região</th>
+      <th>Activo</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @districts.each do |district| %>
+      <tr>
+        <td><%= district.name %></td>
+        <td><%= district.region.name %></td>
+        <td><%= district.active %></td>
+
+        <td>
+          <%= link_to 'Ver', district, class: "btn btn-group-sm btn-info" %>
+          <%= link_to 'Editar', edit_district_path(district), class: "btn btn-group-sm btn-success" %>
+          <% # link_to 'Apagar', district, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate %>
+
+<br>
+
+<%= link_to 'Novo Distrito', new_district_path, class: "btn btn-group-sm btn-success" %>

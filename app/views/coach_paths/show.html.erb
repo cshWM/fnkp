@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date acomplished:</strong>
+  <%= @coach_path.date_acomplished %>
+</p>
+
+<p>
+  <strong>Coach category:</strong>
+  <%= @coach_path.coach_category %>
+</p>
+
+<p>
+  <strong>Coach:</strong>
+  <%= @coach_path.coach %>
+</p>
+
+<%= link_to 'Edit', edit_coach_path_path(@coach_path) %> |
+<%= link_to 'Back', coach_paths_path %>

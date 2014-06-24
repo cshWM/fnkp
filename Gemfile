@@ -13,6 +13,7 @@ gem 'font-icons-rails', :git=> 'git://github.com/shorelabs/font-icons-rails.git'
 gem 'validate_url'
 gem 'invoicexpress'
 gem 'pry'
+gem 'faraday', '0.8'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

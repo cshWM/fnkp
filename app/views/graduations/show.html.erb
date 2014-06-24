@@ -1,0 +1,27 @@
+<% provide(:title, "Categoria: #{@graduation.name}" ) %>
+
+<%= form_for(@graduation, :html => { :class => "form-horizontal" }) do |f| %>
+  <%= render 'shared/error_messages' %>
+
+  <h1><%= @graduation.name %></h1>
+
+  <div class="row">
+  <div class="span6 offset3">
+
+    <%= f.label :order, "Ordem" %>
+    <%= f.text_field :order, :disabled => 'disabled' %>
+
+    <%= f.label :price, "Preço" %>
+    <%= f.text_field :price, :disabled => 'disabled' %>
+
+    <%= f.label :active, "Activa" %>
+    <%= f.check_box :active, :disabled => 'disabled' %>
+
+    <br/><br/>
+
+    <%= link_to 'Editar', edit_graduation_path(@graduation) , class: "btn btn-group-sm btn-info" %>
+    <%= link_to 'Voltar Atrás', graduations_path, class: "btn btn-group-sm btn-info" %>
+    </div>
+  </div>
+<% end %>
+

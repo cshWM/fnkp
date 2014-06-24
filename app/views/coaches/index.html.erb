@@ -1,0 +1,39 @@
+<h1>Listing coaches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fnkp code</th>
+      <th>Ipdj code</th>
+      <th>Official name</th>
+      <th>Import code</th>
+      <th>Cc code</th>
+      <th>Birthdate</th>
+      <th>active</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coaches.each do |coach| %>
+      <tr>
+        <td><%= coach.fnkp_code %></td>
+        <td><%= coach.ipdj_code %></td>
+        <td><%= coach.official_name %></td>
+        <td><%= coach.import_code %></td>
+        <td><%= coach.cc_code %></td>
+        <td><%= coach.birthdate %></td>
+        <td><%= coach.active %></td>
+        <td><%= link_to 'Show', coach %></td>
+        <td><%= link_to 'Edit', edit_coach_path(coach) %></td>
+        <td><%= link_to 'Destroy', coach, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Coach', new_coach_path %>

@@ -1,0 +1,36 @@
+<% provide(:title, 'Categorias de Arbitragem') %>
+<h1>Categorias de Arbitragem</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Categoria</th>
+      <th>Ordem</th>
+      <th>Activo</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @referee_categories.each do |referee_category| %>
+      <tr>
+        <td><%= referee_category.name %></td>
+        <td><%= referee_category.order %></td>
+        <td><%= referee_category.active %></td>
+
+        <td>
+          <%= link_to 'Ver', referee_category, class: "btn btn-group-sm btn-info" %>
+          <%= link_to 'Editar', edit_referee_category_path(referee_category), class: "btn btn-group-sm btn-success" %>
+          <% link_to 'Apagar', referee_category, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate %>
+
+<br>
+
+<%= link_to 'Nova Categoria de Arbitragem', new_referee_category_path, class: "btn btn-group-sm btn-success" %>

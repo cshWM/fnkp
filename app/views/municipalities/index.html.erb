@@ -1,0 +1,36 @@
+<% provide(:title, 'Concelho') %>
+<h1>Concelho</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Concelho</th>
+      <th>Distrito</th>
+      <th>Activo</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @municipalities.each do |municipality| %>
+      <tr>
+        <td><%= municipality.name %></td>
+        <td><%= municipality.district.name %></td>
+        <td><%= municipality.active %></td>
+
+        <td>
+          <%= link_to 'Ver', municipality, class: "btn btn-group-sm btn-info" %>
+          <%= link_to 'Editar', edit_municipality_path(municipality), class: "btn btn-group-sm btn-success" %>
+          <% # link_to 'Apagar', district, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate %>
+
+<br>
+
+<%= link_to 'Novo Concelho', new_municipality_path, class: "btn btn-group-sm btn-success" %>

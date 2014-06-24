@@ -1,0 +1,38 @@
+<% provide(:title, 'Graduação') %>
+<h1>Graduação</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Graduação</th>
+      <th>Ordem</th>
+      <th>Preço</th>
+      <th>Activo</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @graduations.each do |graduation| %>
+      <tr>
+        <td><%= graduation.name %></td>
+        <td><%= graduation.order %></td>
+        <td><%= graduation.price %></td>
+        <td><%= graduation.active %></td>
+
+        <td>
+          <%= link_to 'Ver', graduation, class: "btn btn-group-sm btn-info" %>
+          <%= link_to 'Editar', edit_graduation_path(graduation), class: "btn btn-group-sm btn-success" %>
+          <% link_to 'Apagar', graduation, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate %>
+
+<br>
+
+<%= link_to 'Nova Graduação', new_graduation_path, class: "btn btn-group-sm btn-success" %>

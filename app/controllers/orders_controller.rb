@@ -99,9 +99,13 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:name, :state)
     end
 
+#  require 'invoicexpress'
+#  client = Invoicexpress::Client.new(
+#  :screen_name => "FNKP",
+#  :api_key     => "aefb1242e01bb2496602f3a819eb1b93f84dd646"
+#  )
 
-#  simple_invoices = @client.simplified_invoices
-#  puts simple_invoices
+# @simple_invoices = client.simplified_invoices
 #
 #  invoice = Invoicexpress::Models::SimplifiedInvoice.new(
 #    :date => Date.new(2014, 6, 19),

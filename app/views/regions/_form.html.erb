@@ -1,0 +1,24 @@
+<%= form_for(@region) do |f| %>
+
+  <%= render 'shared/regions_error_messages' %>
+
+  <div class="row">
+    <div class="span6 offset3">
+
+      <%= f.label :name, "Região" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :order, "Ordem" %>
+      <%= f.text_field :order %>
+
+      <%= f.label :active, "Activo" %>
+      <%= f.check_box :active %>
+
+      <br/><br/>
+
+      <%= f.submit "Gravar", class: "btn btn-sm btn-success" %>
+    </div>
+  </div>
+
+
+<% end %>

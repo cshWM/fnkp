@@ -32,10 +32,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  require 'invoicexpress'
-  client = Invoicexpress::Client.new(
-  :screen_name => "FNKP",
-  :api_key     => "aefb1242e01bb2496602f3a819eb1b93f84dd646"
-  )
+
 
 end

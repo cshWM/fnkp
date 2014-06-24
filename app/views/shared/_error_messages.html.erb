@@ -1,10 +1,49 @@
-<% if @user.errors.any? %>
+<% if @user.present? and @user.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
       Contém <%= pluralize(@user.errors.count, "erro") %>.
     </div>
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @referee_category.present? and @referee_category.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@referee_category.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @referee_category.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @coach_category.present? and @coach_category.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@coach_category.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @coach_category.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @graduation.present? and @graduation.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@graduation.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @graduation.errors.full_messages.each do |msg| %>
       <li>* <%= msg %></li>
     <% end %>
     </ul>

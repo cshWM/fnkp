@@ -1,0 +1,29 @@
+<%= form_for(@coach_path) do |f| %>
+  <% if @coach_path.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@coach_path.errors.count, "error") %> prohibited this coach_path from being saved:</h2>
+
+      <ul>
+      <% @coach_path.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date_acomplished %><br>
+    <%= f.datetime_select :date_acomplished %>
+  </div>
+  <div class="field">
+    <%= f.label :coach_category_id %><br>
+    <%= f.text_field :coach_category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :coach_id %><br>
+    <%= f.text_field :coach_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

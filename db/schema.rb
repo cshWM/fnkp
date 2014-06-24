@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618211406) do
+ActiveRecord::Schema.define(version: 20140622230948) do
 
   create_table "association_fee_issues", force: true do |t|
     t.integer  "associationfee_id"
@@ -79,6 +79,53 @@ ActiveRecord::Schema.define(version: 20140618211406) do
     t.datetime "updated_at"
   end
 
+  create_table "coach_categories", force: true do |t|
+    t.string   "name"
+    t.integer  "order"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "coach_paths", force: true do |t|
+    t.datetime "date_acomplished"
+    t.integer  "coaches_id"
+    t.integer  "coach_categories_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "coaches", force: true do |t|
+    t.string   "fnkp_code"
+    t.string   "ipdj_code"
+    t.string   "official_name"
+    t.string   "import_code"
+    t.string   "cc_code"
+    t.date     "birthdate"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "districts", force: true do |t|
+    t.string   "name"
+    t.boolean  "active"
+    t.integer  "region_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "districts", ["region_id"], name: "index_districts_on_region_id"
+
+  create_table "graduations", force: true do |t|
+    t.string   "name"
+    t.integer  "order"
+    t.integer  "price"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "line_items", force: true do |t|
     t.string   "name"
     t.decimal  "value"
@@ -92,6 +139,16 @@ ActiveRecord::Schema.define(version: 20140618211406) do
 
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
 
+  create_table "municipalities", force: true do |t|
+    t.string   "name"
+    t.integer  "district_id"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "municipalities", ["district_id"], name: "index_municipalities_on_district_id"
+
   create_table "orders", force: true do |t|
     t.string   "name"
     t.decimal  "total_value"
@@ -100,6 +157,22 @@ ActiveRecord::Schema.define(version: 20140618211406) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "referee_categories", force: true do |t|
+    t.string   "name"
+    t.integer  "order"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "regions", force: true do |t|
+    t.string   "name"
+    t.integer  "order"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

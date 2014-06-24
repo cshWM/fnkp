@@ -27,5 +27,19 @@ namespace :db do
                    password_confirmation: password)
     end
 
+    CoachCategory.create!( name: "Grau 1",
+                            order: 1,
+                            active: true)
+    CoachCategory.create!( name: "Grau 2",
+                            order: 2,
+                            active: true)
+    CoachCategory.create!( name: "Grau 3",
+                            order: 3,
+                            active: true)
+    CoachCategory.create!( name: "Grau 4",
+                            order: 4,
+                            active: true)
+
   end
+
 end

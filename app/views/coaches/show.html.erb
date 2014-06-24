@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fnkp code:</strong>
+  <%= @coach.fnkp_code %>
+</p>
+
+<p>
+  <strong>Ipdj code:</strong>
+  <%= @coach.ipdj_code %>
+</p>
+
+<p>
+  <strong>Official name:</strong>
+  <%= @coach.official_name %>
+</p>
+
+<p>
+  <strong>Import code:</strong>
+  <%= @coach.import_code %>
+</p>
+
+<p>
+  <strong>Cc code:</strong>
+  <%= @coach.cc_code %>
+</p>
+
+<p>
+  <strong>Birthdate:</strong>
+  <%= @coach.birthdate %>
+</p>
+
+<p>
+  <strong>active:</strong>
+  <%= @coach.active %>
+</p>
+
+<%= link_to 'Edit', edit_coach_path(@coach) %> |
+<%= link_to 'Back', coaches_path %>

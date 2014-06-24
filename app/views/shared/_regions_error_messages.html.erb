@@ -1,0 +1,38 @@
+<% if @region.present? and @region.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@region.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @region.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @district.present? and @district.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@district.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @district.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @municipality.present? and @municipality.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@municipality.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @municipality.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

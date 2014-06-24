@@ -1,0 +1,36 @@
+<% provide(:title, 'Regiões') %>
+<h1>Regiões</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Região</th>
+      <th>Ordem</th>
+      <th>Activo</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @regions.each do |region| %>
+      <tr>
+        <td><%= region.name %></td>
+        <td><%= region.order %></td>
+        <td><%= region.active %></td>
+
+        <td>
+          <%= link_to 'Ver', region, class: "btn btn-group-sm btn-info" %>
+          <%= link_to 'Editar', edit_region_path(region), class: "btn btn-group-sm btn-success" %>
+          <%# link_to 'Apagar', region, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate %>
+
+<br>
+
+<%= link_to 'Nova Região', new_region_path, class: "btn btn-group-sm btn-success" %>

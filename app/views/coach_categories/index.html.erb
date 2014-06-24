@@ -1,0 +1,36 @@
+<% provide(:title, 'Categorias de Treinador') %>
+<h1>Categorias de Treinador</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Categoria</th>
+      <th>Ordem</th>
+      <th>Activo</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coach_categories.each do |coach_category| %>
+      <tr>
+        <td><%= coach_category.name %></td>
+        <td><%= coach_category.order %></td>
+        <td><%= coach_category.active %></td>
+
+        <td>
+          <%= link_to 'Ver', coach_category, class: "btn btn-group-sm btn-info" %>
+          <%= link_to 'Editar', edit_coach_category_path(coach_category), class: "btn btn-group-sm btn-success" %>
+          <% link_to 'Apagar', coach_category, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate %>
+
+<br>
+
+<%= link_to 'Nova Categoria de Treinador', new_coach_category_path, class: "btn btn-group-sm btn-success" %>

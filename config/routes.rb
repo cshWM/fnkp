@@ -1,4 +1,20 @@
 FnkpApp::Application.routes.draw do
+  resources :graduations
+
+  resources :referee_categories
+
+  resources :regions
+
+  resources :districts
+
+  resources :municipalities
+
+  resources :coach_paths
+
+  resources :coaches
+
+  resources :coach_categories
+
   resources :association_fee_issues
 
   resources :association_fees

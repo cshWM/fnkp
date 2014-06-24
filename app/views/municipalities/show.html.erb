@@ -1,0 +1,25 @@
+
+<% provide(:title, "Concelho: #{@municipality.name}" ) %>
+
+<%= form_for(@municipality, :html => { :class => "form-horizontal" }) do |f| %>
+  <%= render 'shared/regions_error_messages' %>
+
+  <h1><%= @municipality.name %></h1>
+
+  <div class="row">
+  <div class="span6 offset3">
+
+    <%= f.label :district, "Distrito" %>
+    <%= f.text_field :district, :value => "#{@municipality.district.name}", :disabled => 'disabled' %>
+
+    <%= f.label :active, "Activo" %>
+    <%= f.check_box :active, :disabled => 'disabled' %>
+
+    <br/><br/>
+
+    <%= link_to 'Editar', edit_municipality_path(@municipality), class: "btn btn-group-sm btn-info" %>
+    <%= link_to 'Voltar Atrás', municipalities_path, class: "btn btn-group-sm btn-info" %>
+    </div>
+  </div>
+<% end %>
+
