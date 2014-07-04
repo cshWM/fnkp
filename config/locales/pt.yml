@@ -25,13 +25,67 @@ pt:
 pt:
   activerecord:
     attributes:
+      user:
+        name: "Nome"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Confirmação de Password"
+        tipo: "Tipo"
+
+      club:
+        name: "Designação"
+        short_name: "Sigla"
+        address: "Endereço"
+        postal4: "Código Postal 4"
+        postal3: "Código Postal 3"
+        city: "Cidade"
+        municipality_id: "Concelho"
+        phone: "Telefone"
+        email: "Email"
+        president: "Presidente"
+        url: "URL"
+        user_id: "Utilizador"
+        association_id: "Associação"
+        altered_by: "Alterado por"
+        updated_at: "Alterado em"
+        active: "Activo"
+
       line_item:
         name: "Designação"
         value: "Valor"
+
       graduation:
         name: "Graduação"
         order: "Ordem"
         price: "Preço"
+
+      coach:
+        official_name: "Nome Oficial"
+        fnkp_code: "Cod. FNKP"
+        ipdj_code: "Cod. IPDJ"
+        import_code: "Cod. Importação"
+        cc_code: "Cartão Cidadão / BI"
+        birthdate: "Data Nascimento"
+        active: "Activo"
+        created_at: "Criado em"
+        updated_at: "Actualizado em"
+        email: "Email"
+        mobile: "Telemóvel"
+        other_contact1: "Outro Contacto 1"
+        other_contact2: "Outro Contacto 2"
+        address: "Morada"
+        postal_code4: "Código Postal 4"
+        postal_code3: "Código Postal 3"
+        municipality_id: "Concelho"
+        notes: "Notas"
+        altered_by: "Alterado por"
+
+      coach_path:
+        date_acomplished: "Data de Obtenção"
+        coach_category: "Categoria de Treinador"
+        coach_category_id: "Categoria de Treinador"
+        coach: "Treinador"
+
     errors:
       messages:
         blank: "tem de ser preenchido"
@@ -44,6 +98,7 @@ pt:
         inclusion: "não está incluído na lista possível"
         exclusion: "não é um valor possível"
         record_invalid: "registo inválido"
+        record_not_found: "não foi possivel encontrar o registo"
         less_than: "não pode ser superior a %{count}"
         more_than: "não pode ser inferior a %{count}"
 

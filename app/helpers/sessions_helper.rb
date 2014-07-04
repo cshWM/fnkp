@@ -34,6 +34,10 @@ module SessionsHelper
     current_user.tipo == 3
   end
 
+  def my_association
+    Association.find_by( :user_id => current_user.id ).id
+  end
+
 
   def sign_out
     current_user.update_attribute(:remember_token,

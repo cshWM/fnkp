@@ -4,19 +4,26 @@
     <div class="span6 offset3">
     <%= render 'shared/error_messages' %>
 
-    <%= f.label :name, "Nome" %>
+    <%= f.label :name %>
       <%= f.text_field :name %>
 
-      <%= f.label :email, "Email" %>
+      <%= f.label :email %>
       <%= f.text_field :email %>
 
       <%= f.label :tipo %>
-      <%= f.number_field :tipo %>
+      <fieldset class="radio_horizontal">
+      <%= f.radio_button :tipo, 1 %>
+      <%= f.label :tipo, "Administrator", :value => 1 %>
+      <%= f.radio_button :tipo, 2 %>
+      <%= f.label :tipo, "Associação", :value => 2 %>
+      <%= f.radio_button :tipo, 3 %>
+      <%= f.label :tipo, "Clube", :value => 3 %>
+      </fieldset>
 
       <%= f.label :password %>
       <%= f.password_field :password %>
 
-      <%= f.label :password_confirmation, "Confirmação de Password"  %>
+      <%= f.label :password_confirmation  %>
       <%= f.password_field :password_confirmation %>
 
       <%= f.submit "Gravar", class: "btn btn-sm btn-success" %>

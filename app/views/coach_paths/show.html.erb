@@ -1,19 +1,27 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "Treinador: #{@coach_path.coach.official_name}" ) %>
 
-<p>
-  <strong>Date acomplished:</strong>
-  <%= @coach_path.date_acomplished %>
-</p>
+<%= form_for(@coach_path, :html => { :class => "form-horizontal" }) do |f| %>
+  <%= render 'shared/error_messages' %>
 
-<p>
-  <strong>Coach category:</strong>
-  <%= @coach_path.coach_category %>
-</p>
+  <div class="row">
+  <div class="span6 offset3">
 
-<p>
-  <strong>Coach:</strong>
-  <%= @coach_path.coach %>
-</p>
+      <%= f.label :date_acomplished %>
+      <%= f.text_field :date_acomplished, :disabled => 'disabled' %>
 
-<%= link_to 'Edit', edit_coach_path_path(@coach_path) %> |
-<%= link_to 'Back', coach_paths_path %>
+      <%= f.label :coach_category %>
+      <%= f.text_field :coach_category, :value => @coach_path.coach_category.name, :disabled => 'disabled' %>
+
+      <%= f.label :coach %>
+      <%= f.text_field :coach, :value => "[ #{@coach_path.coach.fnkp_code} ] #{@coach_path.coach.official_name}", :disabled => 'disabled' %>
+
+
+    <br/><br/>
+
+    <%= link_to 'Editar', edit_coach_path_path(@coach_path), class: "btn btn-group-sm btn-success" %>
+    <%= link_to 'Voltar Atrás', coach_path(@coach_path.coach), class: "btn btn-group-sm btn-info" %>
+     </div>
+
+  </div>
+<% end %>
+

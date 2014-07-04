@@ -4,6 +4,14 @@
 
 $grayMediumLight: #eaeaea;
 
+//$black: #000;
+//$grayDarker: #222;
+//$grayDark: #333;
+//$gray: #555;
+//$grayLight: #999;
+//$grayLighter: #eee;
+//$white: #fff;
+
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -153,12 +161,29 @@ aside {
 
 /* forms */
 
+label {
+  margin: 0px;
+}
+
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
   @include box_sizing;
 }
+
+
+select.date_select {
+    width:auto;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+}
+
+fieldset.radio_horizontal label{
+    display: inline;
+    width:auto;
+}
+
 
 input {
   height: auto !important;
@@ -176,6 +201,7 @@ input {
   @extend .control-group;
   @extend .error;
 }
+
 
 /* Users index */
 

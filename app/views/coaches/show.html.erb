@@ -1,39 +1,70 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "Treinador: #{@coach.official_name}" ) %>
 
-<p>
-  <strong>Fnkp code:</strong>
-  <%= @coach.fnkp_code %>
-</p>
+<%= form_for(@coach, :html => { :class => "form-horizontal" }) do |f| %>
+  <%= render 'shared/error_messages' %>
 
-<p>
-  <strong>Ipdj code:</strong>
-  <%= @coach.ipdj_code %>
-</p>
+  <h1><%= @coach.fnkp_code %></h1>
 
-<p>
-  <strong>Official name:</strong>
-  <%= @coach.official_name %>
-</p>
+  <div class="row">
+  <div class="span6 ">
 
-<p>
-  <strong>Import code:</strong>
-  <%= @coach.import_code %>
-</p>
+      <%= f.label :official_name %>
+      <%= f.text_field :official_name, :disabled => 'disabled' %>
 
-<p>
-  <strong>Cc code:</strong>
-  <%= @coach.cc_code %>
-</p>
+      <%= f.label :fnkp_code %>
+      <%= f.text_field :fnkp_code, :disabled => 'disabled' %>
 
-<p>
-  <strong>Birthdate:</strong>
-  <%= @coach.birthdate %>
-</p>
+      <%= f.label :ipdj_code %>
+      <%= f.text_field :ipdj_code, :disabled => 'disabled' %>
 
-<p>
-  <strong>active:</strong>
-  <%= @coach.active %>
-</p>
+      <%= f.label :import_code %>
+      <%= f.text_field :import_code, :disabled => 'disabled' %>
 
-<%= link_to 'Edit', edit_coach_path(@coach) %> |
-<%= link_to 'Back', coaches_path %>
+      <%= f.label :cc_code %>
+      <%= f.text_field :cc_code, :disabled => 'disabled' %>
+
+      <%= f.label :birthdate %>
+      <%= f.text_field :birthdate, :disabled => 'disabled' %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email, :disabled => 'disabled' %>
+
+      <%= f.label :mobile %>
+      <%= f.text_field :mobile, :disabled => 'disabled' %>
+
+      <%= f.label :other_contact1 %>
+      <%= f.text_field :other_contact1, :disabled => 'disabled' %>
+
+      <%= f.label :other_contact2 %>
+      <%= f.text_field :other_contact2, :disabled => 'disabled' %>
+
+      <%= f.label :address %>
+      <%= f.text_field :address, :disabled => 'disabled' %>
+
+      <%= f.label :postal_code4 %>
+      <%= f.text_field :postal_code4, :disabled => 'disabled' %>
+
+      <%= f.label :postal_code3 %>
+      <%= f.text_field :postal_code3, :disabled => 'disabled' %>
+
+      <%= f.label :municipality_id %>
+      <%= f.text_field :municipality, :value => "#{@coach.municipality.name}", :disabled => 'disabled' %>
+
+      <%= f.label :notes %>
+      <%= f.text_area :notes, :disabled => 'disabled' %>
+
+      <%= f.label :active %>
+      <%= f.check_box :active, :disabled => 'disabled' %>
+
+    <br/><br/>
+
+    <%= link_to 'Editar', edit_coach_path(@coach), class: "btn btn-group-sm btn-info" %>
+    <%= link_to 'Voltar Atrás', coaches_path, class: "btn btn-group-sm btn-info" %>
+     </div>
+
+     <div class="span6 ">
+      <%= render 'coach_history' %>
+     </div>
+  </div>
+<% end %>
+

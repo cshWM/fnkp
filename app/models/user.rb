@@ -2,6 +2,10 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   before_create :create_remember_token
 
+  has_many :altered_coaches, :class_name => 'Coach', :foreign_key => :altered_by
+#  belongs_to :altered_by_user, :class_name => 'User', :foreign_key => :altered_by_user_id
+
+
   has_many :orders
   has_many :line_items
   validates :name, presence: true, length: { maximum: 250 }

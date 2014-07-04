@@ -1,11 +1,14 @@
 class Association < ActiveRecord::Base
   before_save { self.email = email.downcase }
+  before_save { self.short_name = short_name.upcase }
 
   has_many :clubs
   has_many :association_fees, through: :association_fee_issues
   has_one :user
-  validates :name, length: { maximum: 140 }
-  validates :short_name, length: { maximum: 10 }
+  validates :name, length: { maximum: 140 },
+            uniqueness: { case_sensitive: false }
+  validates :short_name, length: { maximum: 10 },
+            uniqueness: { case_sensitive: false }
   validates :address, length: { maximum: 500 }
   validates :postal4, numericality: true, length: { maximum: 4 }, :allow_blank => true
   validates :postal3, numericality: true, length: { maximum: 3 }, :allow_blank => true

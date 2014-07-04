@@ -30,7 +30,7 @@ class CoachPathsController < ApplicationController
 
     respond_to do |format|
       if @coach_path.save
-        format.html { redirect_to @coach_path, notice: 'Coach path was successfully created.' }
+        format.html { redirect_to coach_url( @coach_path.coach), notice: 'Histórico de treinador criado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @coach_path }
       else
         format.html { render action: 'new' }
@@ -44,7 +44,7 @@ class CoachPathsController < ApplicationController
   def update
     respond_to do |format|
       if @coach_path.update(coach_path_params)
-        format.html { redirect_to @coach_path, notice: 'Coach path was successfully updated.' }
+        format.html { redirect_to coach_url( @coach_path.coach), notice: 'Histórico de treinador actualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,9 +56,10 @@ class CoachPathsController < ApplicationController
   # DELETE /coach_paths/1
   # DELETE /coach_paths/1.json
   def destroy
+    @myCoach = @coach_path.coach
     @coach_path.destroy
     respond_to do |format|
-      format.html { redirect_to coach_paths_url }
+      format.html { redirect_to coach_url( @myCoach ) }
       format.json { head :no_content }
     end
   end

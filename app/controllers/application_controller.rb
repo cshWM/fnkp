@@ -15,6 +15,14 @@ class ApplicationController < ActionController::Base
     redirect_to(root_url) unless current_user.tipo == 1
   end
 
+  def association_user
+    redirect_to(root_url) unless current_user.tipo == 2
+  end
+
+  def club_user
+    redirect_to(root_url) unless current_user.tipo == 3
+  end
+
 # descomentar em produção
 #  rescue_from ActiveRecord::RecordNotFound do |exception|
 #    render_404

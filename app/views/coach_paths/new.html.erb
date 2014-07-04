@@ -1,5 +1,10 @@
-<h1>New coach_path</h1>
+<% provide(:title, 'Novo Histórico de Treinador') %>
+<h1>Novo Histórico de Treinador</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', coach_paths_path %>
+<div class="row">
+  <div class="span6 offset3">
+  <%= link_to 'Voltar Atrás', coach_path( params[:coach] ? params[:coach] : @coach_path.coach.id ), class: "btn btn-group-sm btn-info" %>
+  </div>
+</div>

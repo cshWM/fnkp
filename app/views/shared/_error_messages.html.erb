@@ -49,3 +49,42 @@
     </ul>
   </div>
 <% end %>
+
+<% if @coach.present? and @coach.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@coach.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @coach.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @coach_path.present? and @coach_path.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@coach_path.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @coach_path.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @club.present? and @club.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@club.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @club.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

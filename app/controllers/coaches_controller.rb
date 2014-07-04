@@ -6,7 +6,7 @@ class CoachesController < ApplicationController
   # GET /coaches
   # GET /coaches.json
   def index
-    @coaches = Coach.all
+    @coaches = Coach.paginate(page: params[:page], :per_page => 15)
   end
 
   # GET /coaches/1
@@ -28,9 +28,14 @@ class CoachesController < ApplicationController
   def create
     @coach = Coach.new(coach_params)
 
+    if @coach.fnkp_code.blank?
+      @coach.fnkp_code = Coach.maximum( "fnkp_code" ).to_i + 1
+    end
+    @coach.altered_by = current_user.id
+
     respond_to do |format|
       if @coach.save
-        format.html { redirect_to @coach, notice: 'Coach was successfully created.' }
+        format.html { redirect_to @coach, notice: 'Treinador criado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @coach }
       else
         format.html { render action: 'new' }
@@ -42,9 +47,15 @@ class CoachesController < ApplicationController
   # PATCH/PUT /coaches/1
   # PATCH/PUT /coaches/1.json
   def update
+
     respond_to do |format|
+      if @coach.fnkp_code.blank?
+        @coach.fnkp_code = Coach.maximum( "fnkp_code" ).to_i + 1
+      end
+      @coach.altered_by = current_user.id
+
       if @coach.update(coach_params)
-        format.html { redirect_to @coach, notice: 'Coach was successfully updated.' }
+        format.html { redirect_to @coach, notice: 'Treinador actualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -71,6 +82,10 @@ class CoachesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def coach_params
-      params.require(:coach).permit(:fnkp_code, :ipdj_code, :official_name, :import_code, :cc_code, :birthdate, :active)
+      params.require(:coach).permit(:fnkp_code, :ipdj_code, :official_name,
+                                                :import_code, :cc_code, :birthdate, :active,
+                                                :email, :mobile, :other_contact1, :other_contact2,
+                                                :address, :postal_code4, :postal_code3,
+                                                :municipality_id, :notes)
     end
 end

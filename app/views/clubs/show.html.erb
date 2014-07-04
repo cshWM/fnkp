@@ -1,64 +1,52 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @club.name %>
-</p>
+<% provide(:title, "Clube: #{@club.short_name}" ) %>
 
-<p>
-  <strong>Short name:</strong>
-  <%= @club.short_name %>
-</p>
+<%= form_for(@club, :html => { :class => "form-horizontal" }) do |f| %>
+  <%= render 'shared/error_messages' %>
 
-<p>
-  <strong>Address:</strong>
-  <%= @club.address %>
-</p>
+  <h1><%= @club.short_name %></h1>
 
-<p>
-  <strong>Postal4:</strong>
-  <%= @club.postal4 %>
-</p>
+  <div class="row">
+  <div class="span6 offset3">
 
-<p>
-  <strong>Postal3:</strong>
-  <%= @club.postal3 %>
-</p>
+    <%= f.label :name %>
+    <%= f.text_field :name, :disabled => 'disabled' %>
 
-<p>
-  <strong>City:</strong>
-  <%= @club.city %>
-</p>
+    <%= f.label :address %>
+    <%= f.text_field :address, :disabled => 'disabled' %>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @club.phone %>
-</p>
+    <%= f.label :postal4 %>
+    <%= f.text_field :postal4, :disabled => 'disabled' %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @club.email %>
-</p>
+    <%= f.label :postal3 %>
+    <%= f.text_field :postal3, :disabled => 'disabled' %>
 
-<p>
-  <strong>President:</strong>
-  <%= @club.president %>
-</p>
+    <%= f.label :city %>
+    <%= f.text_field :city, :disabled => 'disabled' %>
 
-<p>
-  <strong>Url:</strong>
-  <%= @club.url %>
-</p>
+    <%= f.label :municipality_id %>
+    <%= f.text_field :municipality_id, :value => "#{Municipality.find( @club.municipality_id ).name}", :disabled => 'disabled' %>
 
-<p>
-  <strong>User:</strong>
-  <%= @club.user_id %>
-</p>
+    <%= f.label :phone %>
+    <%= f.text_field :phone, :disabled => 'disabled' %>
 
-<p>
-  <strong>Association:</strong>
-  <%= @club.association_id %>
-</p>
+    <%= f.label :email %>
+    <%= f.text_field :email, :disabled => 'disabled' %>
 
-<%= link_to 'Edit', edit_club_path(@club) %> |
-<%= link_to 'Back', clubs_path %>
+    <%= f.label :president %>
+    <%= f.text_field :president, :disabled => 'disabled' %>
+
+    <%= f.label :url %>
+    <%= f.text_field :url, :disabled => 'disabled' %>
+
+    <%= f.label :active %>
+    <%= f.check_box :active, :disabled => 'disabled' %>
+
+
+    <br/><br/>
+
+    <%= link_to 'Editar', edit_club_path(@club), class: "btn btn-group-sm btn-info" %>
+    <%= link_to 'Voltar Atrás', clubs_path, class: "btn btn-group-sm btn-info" %>
+    </div>
+  </div>
+<% end %>

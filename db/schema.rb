@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622230948) do
+ActiveRecord::Schema.define(version: 20140702203038) do
 
   create_table "association_fee_issues", force: true do |t|
     t.integer  "associationfee_id"
@@ -77,7 +77,11 @@ ActiveRecord::Schema.define(version: 20140622230948) do
     t.integer  "association_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "municipality_id"
+    t.boolean  "active"
   end
+
+  add_index "clubs", ["municipality_id"], name: "index_clubs_on_municipality_id"
 
   create_table "coach_categories", force: true do |t|
     t.string   "name"
@@ -93,7 +97,12 @@ ActiveRecord::Schema.define(version: 20140622230948) do
     t.integer  "coach_categories_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "altered_by"
+    t.integer  "coach_id"
+    t.integer  "coach_category_id"
   end
+
+  add_index "coach_paths", ["coach_id", "coach_category_id"], name: "coach_path_index"
 
   create_table "coaches", force: true do |t|
     t.string   "fnkp_code"
@@ -105,7 +114,19 @@ ActiveRecord::Schema.define(version: 20140622230948) do
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
+    t.string   "mobile"
+    t.string   "other_contact1"
+    t.string   "other_contact2"
+    t.string   "address"
+    t.string   "postal_code4"
+    t.string   "postal_code3"
+    t.integer  "municipality_id"
+    t.string   "notes"
+    t.integer  "altered_by"
   end
+
+  add_index "coaches", ["municipality_id"], name: "index_coaches_on_municipality_id"
 
   create_table "districts", force: true do |t|
     t.string   "name"

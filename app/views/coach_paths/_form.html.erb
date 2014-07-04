@@ -1,29 +1,22 @@
 <%= form_for(@coach_path) do |f| %>
-  <% if @coach_path.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@coach_path.errors.count, "error") %> prohibited this coach_path from being saved:</h2>
 
-      <ul>
-      <% @coach_path.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <%= render 'shared/error_messages' %>
+
+  <div class="row">
+    <div class="span6 offset3">
+
+
+      <%= f.label :date_acomplished %>
+      <%= f.date_select :date_acomplished , {:order => [:day, :month, :year], :start_year => 0.years.ago.year, :end_year => 18.year.ago.year, :use_two_digit_numbers => true}, {:class => 'date_select'} %>
+
+      <%= f.label :coach_category_id %>
+      <%= f.collection_select :coach_category_id, CoachCategory.all, :id, :name, {:selected => (@coach_path.coach_category_id.present? and @coach_path.coach_category_id), :required => true} %>
+
+      <%= f.hidden_field :coach_id, :value => params[:coach] ? params[:coach] : @coach_path.coach.id %>
+
+      <br/><br/>
+
+      <%= f.submit "Gravar", class: "btn btn-sm btn-success" %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :date_acomplished %><br>
-    <%= f.datetime_select :date_acomplished %>
-  </div>
-  <div class="field">
-    <%= f.label :coach_category_id %><br>
-    <%= f.text_field :coach_category_id %>
-  </div>
-  <div class="field">
-    <%= f.label :coach_id %><br>
-    <%= f.text_field :coach_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
   </div>
 <% end %>

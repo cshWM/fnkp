@@ -1,0 +1,28 @@
+<h1>Histórico do Treinador</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Categoria</th>
+      <th>Em</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coach.coach_paths.each do |coach_path| %>
+      <tr>
+        <td><%= coach_path.coach_category.name %></td>
+        <td><%= coach_path.date_acomplished.to_date %></td>
+        <td>
+          <%= link_to 'Editar', edit_coach_path_path(coach_path), class: "btn btn-group-sm btn-success" %>
+          <%= link_to 'Apagar', coach_path, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova Categoria', "#{new_coach_path_path}?coach=#{@coach.id}", class: "btn btn-group-sm btn-success" %>

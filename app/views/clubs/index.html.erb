@@ -1,49 +1,48 @@
-<h1>Listing clubs</h1>
+<% provide(:title, 'Clubes') %>
+<h1>Clubes</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Short name</th>
-      <th>Address</th>
-      <th>Postal4</th>
-      <th>Postal3</th>
-      <th>City</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th>President</th>
-      <th>Url</th>
-      <th>User</th>
-      <th>Association</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @clubs.each do |club| %>
+<%= puts "!!!!!!!!!!!!!#{@clubs.length}========" %>
+<% if @clubs.length > 0 %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= club.name %></td>
-        <td><%= club.short_name %></td>
-        <td><%= club.address %></td>
-        <td><%= club.postal4 %></td>
-        <td><%= club.postal3 %></td>
-        <td><%= club.city %></td>
-        <td><%= club.phone %></td>
-        <td><%= club.email %></td>
-        <td><%= club.president %></td>
-        <td><%= club.url %></td>
-        <td><%= club.user_id %></td>
-        <td><%= club.association_id %></td>
-        <td><%= link_to 'Show', club %></td>
-        <td><%= link_to 'Edit', edit_club_path(club) %></td>
-        <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Sigla</th>
+        <th>Designação</th>
+        <th>Concelho</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @clubs.each do |club| %>
+        <tr>
+          <td><%= club.short_name %></td>
+          <td><%= club.name %></td>
+          <td><%= Municipality.find( club.municipality_id).name %></td>
+
+          <td>
+            <%= link_to 'Ver', club, class: "btn btn-group-sm btn-info" %>
+            <%= link_to 'Editar', edit_club_path(club), class: "btn btn-group-sm btn-success" %>
+            <% if is_admin? %>
+              <%= link_to 'Apagar', club, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+            <% end %>
+          </td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= will_paginate %>
+<% else %>
+  Ainda não possui clubes.
+  <br/>
+  <br/>
+  Clique no botão "Novo Clube" e inicie a sua actividade federativa!
+  <br/>
+<% end %>
+
 
 <br>
 
-<%= link_to 'New Club', new_club_path %>
+<%= link_to 'Novo Clube', new_club_path, class: "btn btn-group-sm btn-success" %>
