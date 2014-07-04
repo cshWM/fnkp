@@ -1,4 +1,8 @@
 FnkpApp::Application.routes.draw do
+  resources :referee_paths
+
+  resources :referees
+
   resources :graduations
 
   resources :referee_categories

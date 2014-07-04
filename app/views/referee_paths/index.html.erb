@@ -1,0 +1,33 @@
+<!--
+<h1>Listing referee_paths</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date acomplished</th>
+      <th>Referee category</th>
+      <th>Referee</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @referee_paths.each do |referee_path| %>
+      <tr>
+        <td><%= referee_path.date_acomplished %></td>
+        <td><%= referee_path.referee_category %></td>
+        <td><%= referee_path.referee %></td>
+        <td><%= link_to 'Show', referee_path %></td>
+        <td><%= link_to 'Edit', edit_referee_path_path(referee_path) %></td>
+        <td><%= link_to 'Destroy', referee_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Referee path', new_referee_path_path %>
+-->

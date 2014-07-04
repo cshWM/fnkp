@@ -86,6 +86,32 @@ pt:
         coach_category_id: "Categoria de Treinador"
         coach: "Treinador"
 
+      referee:
+        official_name: "Nome Oficial"
+        fnkp_code: "Cod. FNKP"
+        import_code: "Cod. Importação"
+        cc_code: "Cartão Cidadão / BI"
+        birthdate: "Data Nascimento"
+        active: "Activo"
+        created_at: "Criado em"
+        updated_at: "Actualizado em"
+        email: "Email"
+        mobile: "Telemóvel"
+        other_contact1: "Outro Contacto 1"
+        other_contact2: "Outro Contacto 2"
+        address: "Morada"
+        postal_code4: "Código Postal 4"
+        postal_code3: "Código Postal 3"
+        municipality_id: "Concelho"
+        notes: "Notas"
+        altered_by: "Alterado por"
+
+      referee_path:
+        date_acomplished: "Data de Obtenção"
+        coach_category: "Categoria de Técnico de Arbitragem"
+        coach_category_id: "Categoria de Técnico de Arbitragem"
+        coach: "Técnico de Arbitragem"
+
     errors:
       messages:
         blank: "tem de ser preenchido"

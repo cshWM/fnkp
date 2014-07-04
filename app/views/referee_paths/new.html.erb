@@ -1,0 +1,10 @@
+<% provide(:title, 'Novo Histórico de Técnico de Arbitragem') %>
+<h1>Novo Histórico de Técnico de Arbitragem</h1>
+
+<%= render 'form' %>
+
+<div class="row">
+  <div class="span6 offset3">
+  <%= link_to 'Voltar Atrás', referee_path( params[:referee] ? params[:referee] : @referee_path.referee.id ), class: "btn btn-group-sm btn-info" %>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<% provide(:title, "Técnico de Arbitragem: #{@referee_path.referee.official_name}" ) %>
+
+<%= form_for(@referee_path, :html => { :class => "form-horizontal" }) do |f| %>
+  <%= render 'shared/error_messages' %>
+
+  <div class="row">
+  <div class="span6 offset3">
+
+      <%= f.label :date_acomplished %>
+      <%= f.text_field :date_acomplished, :disabled => 'disabled' %>
+
+      <%= f.label :referee_category %>
+      <%= f.text_field :referee_category, :value => @referee_path.referee_category.name, :disabled => 'disabled' %>
+
+      <%= f.label :referee %>
+      <%= f.text_field :referee, :value => "[ #{@referee_path.referee.fnkp_code} ] #{@referee_path.referee.official_name}", :disabled => 'disabled' %>
+
+
+    <br/><br/>
+
+    <%= link_to 'Editar', edit_referee_path_path(@referee_path), class: "btn btn-group-sm btn-success" %>
+    <%= link_to 'Voltar Atrás', referee_path(@referee_path.referee), class: "btn btn-group-sm btn-info" %>
+     </div>
+
+  </div>
+<% end %>
+

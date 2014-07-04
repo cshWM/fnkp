@@ -1,0 +1,22 @@
+<%= form_for(@referee_path) do |f| %>
+
+  <%= render 'shared/error_messages' %>
+
+  <div class="row">
+    <div class="span6 offset3">
+
+
+      <%= f.label :date_acomplished %>
+      <%= f.date_select :date_acomplished , {:order => [:day, :month, :year], :start_year => 0.years.ago.year, :end_year => 18.year.ago.year, :use_two_digit_numbers => true}, {:class => 'date_select'} %>
+
+      <%= f.label :referee_category_id %>
+      <%= f.collection_select :referee_category_id, RefereeCategory.all, :id, :name, {:selected => (@referee_path.referee_category_id.present? and @referee_path.referee_category_id), :required => true} %>
+
+      <%= f.hidden_field :referee_id, :value => params[:referee] ? params[:referee] : @referee_path.referee.id %>
+
+      <br/><br/>
+
+      <%= f.submit "Gravar", class: "btn btn-sm btn-success" %>
+    </div>
+  </div>
+<% end %>

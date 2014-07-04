@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702203038) do
+ActiveRecord::Schema.define(version: 20140704215343) do
 
   create_table "association_fee_issues", force: true do |t|
     t.integer  "associationfee_id"
@@ -187,6 +187,40 @@ ActiveRecord::Schema.define(version: 20140702203038) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "referee_paths", force: true do |t|
+    t.datetime "date_acomplished"
+    t.integer  "referee_category_id"
+    t.integer  "referee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "referee_paths", ["referee_category_id"], name: "index_referee_paths_on_referee_category_id"
+  add_index "referee_paths", ["referee_id"], name: "index_referee_paths_on_referee_id"
+
+  create_table "referees", force: true do |t|
+    t.string   "fnkp_code"
+    t.string   "official_name"
+    t.string   "import_code"
+    t.string   "cc_code"
+    t.date     "birthdate"
+    t.string   "email"
+    t.string   "mobile"
+    t.string   "other_contact1"
+    t.string   "other_contact2"
+    t.string   "address"
+    t.string   "postal_code4"
+    t.string   "postal_code3"
+    t.integer  "municipality_id"
+    t.string   "notes"
+    t.integer  "altered_by"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "referees", ["municipality_id"], name: "index_referees_on_municipality_id"
 
   create_table "regions", force: true do |t|
     t.string   "name"

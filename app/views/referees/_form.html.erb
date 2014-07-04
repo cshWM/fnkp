@@ -1,0 +1,58 @@
+<%= form_for(@referee) do |f| %>
+  <%= render 'shared/error_messages' %>
+
+  <div class="row">
+    <div class="span6 offset3">
+
+      <%= f.label :official_name %>
+      <%= f.text_field :official_name %>
+
+      <%= f.label :fnkp_code %>
+      <%= f.text_field :fnkp_code %>
+
+      <%= f.label :import_code %>
+      <%= f.text_field :import_code %>
+
+      <%= f.label :cc_code %>
+      <%= f.text_field :cc_code %>
+
+      <%= f.label :birthdate %><br>
+      <%= f.date_select :birthdate , {:order => [:day, :month, :year], :start_year => 80.years.ago.year, :end_year => 18.year.ago.year, :use_two_digit_numbers => true}, {:class => 'date_select'} %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :mobile %>
+      <%= f.text_field :mobile %>
+
+      <%= f.label :other_contact1 %>
+      <%= f.text_field :other_contact1 %>
+
+      <%= f.label :other_contact2 %>
+      <%= f.text_field :other_contact2 %>
+
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+
+      <%= f.label :postal_code4 %>
+      <%= f.text_field :postal_code4 %>
+
+      <%= f.label :postal_code3 %>
+      <%= f.text_field :postal_code3 %>
+
+
+      <%= f.label :municipality_id %>
+      <%= f.collection_select :municipality_id, Municipality.all, :id, :name, {:selected => (@referee.municipality.present? and @referee.municipality.id), :required => true} %>
+
+      <%= f.label :notes %>
+      <%= f.text_area :notes %>
+
+      <%= f.label :active, "Activo" %>
+      <%= f.check_box :active %>
+
+      <br/><br/>
+
+      <%= f.submit "Gravar", class: "btn btn-sm btn-success" %>
+    </div>
+  </div>
+<% end %>

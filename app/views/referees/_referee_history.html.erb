@@ -1,0 +1,28 @@
+<h1>Histórico do Técnico de Arbitragem</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Categoria</th>
+      <th>Em</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @referee.referee_paths.each do |referee_path| %>
+      <tr>
+        <td><%= referee_path.referee_category.name %></td>
+        <td><%= referee_path.date_acomplished.to_date %></td>
+        <td>
+          <%= link_to 'Editar', edit_referee_path_path(referee_path), class: "btn btn-group-sm btn-success" %>
+          <%= link_to 'Apagar', referee_path, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova Categoria', "#{new_referee_path_path}?referee=#{@referee.id}", class: "btn btn-group-sm btn-success" %>
