@@ -4,6 +4,7 @@ class Association < ActiveRecord::Base
 
   has_many :clubs
   has_many :association_fees, through: :association_fee_issues
+
   has_one :user
   validates :name, length: { maximum: 140 },
             uniqueness: { case_sensitive: false }

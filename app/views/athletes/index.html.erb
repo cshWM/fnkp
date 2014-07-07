@@ -1,16 +1,14 @@
-<h1>Listing athletes</h1>
+<% provide(:title, 'Atletas') %>
+<h1>Atletas</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Short name</th>
-      <th>Sex</th>
-      <th>Birthdate</th>
-      <th>Externalcode</th>
-      <th>Club</th>
-      <th></th>
-      <th></th>
+      <th>Cod. FNKP</th>
+      <th>Nome</th>
+      <th>Sexo</th>
+      <th>Nascimento</th>
+      <th>Activo</th>
       <th></th>
     </tr>
   </thead>
@@ -18,20 +16,27 @@
   <tbody>
     <% @athletes.each do |athlete| %>
       <tr>
+        <td><%= athlete.fnkp_code %></td>
         <td><%= athlete.name %></td>
-        <td><%= athlete.short_name %></td>
         <td><%= athlete.sex %></td>
         <td><%= athlete.birthdate %></td>
-        <td><%= athlete.externalCode %></td>
-        <td><%= athlete.club_id %></td>
-        <td><%= link_to 'Show', athlete %></td>
-        <td><%= link_to 'Edit', edit_athlete_path(athlete) %></td>
-        <td><%= link_to 'Destroy', athlete, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= athlete.active %></td>
+
+        <td>
+          <%= link_to 'Ver', athlete, class: "btn btn-group-sm btn-info" %>
+          <%= link_to 'Editar', edit_athlete_path(athlete), class: "btn btn-group-sm btn-success" %>
+          <% if is_admin? %>
+            <%= link_to 'Apagar', athlete, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+          <% end %>
+        </td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<%= will_paginate %>
+
 <br>
 
-<%= link_to 'New Athlete', new_athlete_path %>
+<%= link_to 'Novo Atleta', new_athlete_path, class: "btn btn-group-sm btn-success" %>

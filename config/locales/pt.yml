@@ -112,6 +112,23 @@ pt:
         coach_category_id: "Categoria de Técnico de Arbitragem"
         coach: "Técnico de Arbitragem"
 
+      athlete:
+        name: "Nome"
+        fnkp_code: "Cod. FNKP"
+        import_code: "Cod. Importação"
+        cc_code: "Cartão Cidadão / BI"
+        birthdate: "Data Nascimento"
+        active: "Activo"
+        sex: "Sexo"
+        national: "É Português"
+        created_at: "Criado em"
+        updated_at: "Actualizado em"
+        club_id: "Clube"
+        altered_by: "Alterado por"
+
+      association_fees:
+
+
     errors:
       messages:
         blank: "tem de ser preenchido"

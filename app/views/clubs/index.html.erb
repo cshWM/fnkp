@@ -44,5 +44,6 @@
 
 
 <br>
-
-<%= link_to 'Novo Clube', new_club_path, class: "btn btn-group-sm btn-success" %>
+<% if is_association? %>
+  <%= link_to 'Novo Clube', new_club_path, class: "btn btn-group-sm btn-success" %>
+<% end %>

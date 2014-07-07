@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140704215343) do
+ActiveRecord::Schema.define(version: 20140706204049) do
 
   create_table "association_fee_issues", force: true do |t|
     t.integer  "associationfee_id"
@@ -56,10 +56,16 @@ ActiveRecord::Schema.define(version: 20140704215343) do
     t.string   "short_name"
     t.string   "sex"
     t.date     "birthdate"
-    t.string   "externalCode"
+    t.string   "import_code"
     t.integer  "club_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active"
+    t.boolean  "national"
+    t.boolean  "is_current"
+    t.integer  "altered_by"
+    t.string   "cc_code"
+    t.integer  "fnkp_code",   limit: 255
   end
 
   create_table "clubs", force: true do |t|

@@ -47,7 +47,20 @@
         <%= f.check_box :active %>
     <% end %>
 
-    <%= f.hidden_field :association_id, :value => Association.find_by( :user_id => current_user.id ).id %>
+<% # CSH alterar para permitir que o admin crie clubes %>
+    <% if @club.new_record? %>
+        <% if is_admin? %>
+            <%= f.label :association_id %>
+            <%= f.collection_select :association_id, Association.all, :id, :name, :selected => @club.association_id %>
+        <% elsif is_association? %>
+            <%= f.hidden_field :association_id, :value => Association.find_by( :user_id => current_user.id ).id  %>
+        <% end %>
+    <% else %>
+        <% if is_admin? %>
+            <%= f.label :association_id %>
+            <%= f.collection_select :association_id, Association.all, :id, :name, :selected => @club.association_id %>
+        <% end %>
+    <% end %>
 
     <br/><br/>
     <%= f.submit "Gravar", class: "btn btn-sm btn-success" %>

@@ -1,6 +1,11 @@
-<h1>Editing athlete</h1>
+<% provide(:title, 'Editar Atleta') %>
+<h1>Editar Atleta</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @athlete %> |
-<%= link_to 'Back', athletes_path %>
+<div class="row">
+  <div class="span6 offset3">
+  <%= link_to 'Ver', @athlete, class: "btn btn-group-sm btn-info" %>
+  <%= link_to 'Voltar Atrás', athletes_path, class: "btn btn-group-sm btn-info" %>
+  </div>
+</div>

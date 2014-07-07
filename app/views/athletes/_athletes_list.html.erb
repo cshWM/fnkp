@@ -1,0 +1,51 @@
+<h2>Atletas</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= link_to "FNKP" , if params[:orderby] =='fnkpasc' then '?orderby=fnkpdesc' else '?orderby=fnkpasc' end %></th>
+      <th><%= link_to "Nome" , if params[:orderby] =='nameasc' then '?orderby=namedesc' else '?orderby=nameasc' end %></th>
+      <th><%= link_to "Sexo" , if params[:orderby] =='sexasc' then '?orderby=sexdesc' else '?orderby=sexasc' end %></th>
+      <th><%= link_to "Nascimento" , if params[:orderby] =='dtasc' then '?orderby=dtdesc' else '?orderby=fnkpasc' end %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%
+    # VER COM PMG
+     @atletas = Athlete.where( :club_id => params[:id])
+
+     @atletas.order(short_name: :asc) if params[:orderby] == 'nameasc'
+     @atletas.order(short_name: :desc) if params[:orderby] == 'namedesc'
+
+     @atletas.order(fnkp_code: :asc) if params[:orderby] == 'fnkpasc'
+     @atletas.order(fnkp_code: :desc) if params[:orderby] == 'fnkpdesc'
+
+     @atletas.order(sex: :asc) if params[:orderby] == 'sexasc'
+     @atletas.order(sex: :desc) if params[:orderby] == 'sexdesc'
+
+     @atletas.order(birthdate: :asc) if params[:orderby] == 'dtasc'
+     @atletas.order(birthdate: :desc) if params[:orderby] == 'dtdesc'
+
+     %>
+    <% @atletas.each do |athlete| %>
+      <tr <%= "style='background:#f1f1f1'".html_safe unless athlete.active %> >
+        <td><%= link_to athlete.fnkp_code, athlete, class: "btn btn-group-sm btn-info" %></td>
+        <td><%= "#{athlete.short_name}".downcase %></td>
+        <td><%= athlete.sex.first.upcase %></td>
+        <td><%= athlete.birthdate %></td>
+
+        <td>
+
+          <%= link_to 'E', edit_athlete_path(athlete), class: "btn btn-group-sm btn-success" %>
+          <% if is_admin? %>
+            <%= link_to 'A', athlete, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+          <% end %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

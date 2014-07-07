@@ -116,3 +116,17 @@
     </ul>
   </div>
 <% end %>
+
+<% if @athlete.present? and @athlete.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@athlete.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @athlete.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+

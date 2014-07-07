@@ -1,34 +1,51 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "Atleta: #{@athlete.fnkp_code} - #{@athlete.short_name}" ) %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @athlete.name %>
-</p>
+<%= form_for(@athlete, :html => { :class => "form-horizontal" }) do |f| %>
+  <%= render 'shared/error_messages' %>
 
-<p>
-  <strong>Short name:</strong>
-  <%= @athlete.short_name %>
-</p>
+  <h1><%= @athlete.fnkp_code %></h1>
 
-<p>
-  <strong>Sex:</strong>
-  <%= @athlete.sex %>
-</p>
+  <div class="row">
+  <div class="span6 ">
 
-<p>
-  <strong>Birthdate:</strong>
-  <%= @athlete.birthdate %>
-</p>
+      <%= f.label :name %>
+      <%= f.text_field :name, :disabled => 'disabled' %>
 
-<p>
-  <strong>Externalcode:</strong>
-  <%= @athlete.externalCode %>
-</p>
+      <%= f.label :fnkp_code %>
+      <%= f.text_field :fnkp_code, :disabled => 'disabled' %>
 
-<p>
-  <strong>Club:</strong>
-  <%= @athlete.club_id %>
-</p>
+      <%= f.label :cc_code %>
+      <%= f.text_field :cc_code, :disabled => 'disabled' %>
 
-<%= link_to 'Edit', edit_athlete_path(@athlete) %> |
-<%= link_to 'Back', athletes_path %>
+      <%= f.label :birthdate %>
+      <%= f.text_field :birthdate, :disabled => 'disabled' %>
+
+      <%= f.label :sex %>
+      <fieldset class="radio_horizontal">
+      <%= f.radio_button :sex, 'male' %>
+      <%= f.label :sex, "Masculino", :value => 'male', :disabled => 'disabled' %>
+      <%= f.radio_button :sex, 'female' %>
+      <%= f.label :sex, "Feminino", :value => 'female', :disabled => 'disabled' %>
+      </fieldset>
+
+      <%= f.label :club_id %>
+      <%= f.text_field :club, :value => "#{@athlete.club.name}", :disabled => 'disabled' %>
+
+      <%= f.label :national %>
+      <%= f.check_box :national, :disabled => 'disabled' %>
+
+      <%= f.label :active %>
+      <%= f.check_box :active, :disabled => 'disabled' %>
+
+    <br/><br/>
+
+    <%= link_to 'Editar', edit_athlete_path(@athlete), class: "btn btn-group-sm btn-info" %>
+    <%= link_to 'Voltar Atrás', athletes_path, class: "btn btn-group-sm btn-info" %>
+     </div>
+
+     <div class="span6 ">
+      <%# render 'athlete_history' %>
+     </div>
+  </div>
+<% end %>
+

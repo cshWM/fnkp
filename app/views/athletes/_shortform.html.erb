@@ -1,0 +1,52 @@
+<% @athlete = Athlete.new
+# VER COM PMG %>
+<%= form_for(@athlete) do |f| %>
+  <%= render 'shared/error_messages' %>
+
+  <div class="row">
+    <div class="span1">
+      <%= f.label :fnkp_code ,"FNKP" %>
+      <%= f.text_field :fnkp_code %>
+    </div>
+
+    <div class="span3 ">
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="span2">
+      <%= f.label :cc_code %>
+      <%= f.text_field :cc_code %>
+    </div>
+  </div>
+<br/>
+  <div class="row">
+    <div class="span3">
+      <%= f.label :birthdate %>
+      <%= f.date_select :birthdate , {:order => [:day, :month, :year], :start_year => 80.years.ago.year, :end_year => 1.year.ago.year, :use_two_digit_numbers => true}, {:class => 'date_select'} %>
+    </div>
+
+    <div class="span2">
+      <%= f.label :sex %>
+      <fieldset class="radio_horizontal">
+      <%= f.radio_button :sex, 'male', :checked => (true if @athlete.sex == 'male' or !@athlete.sex.present? ) %>
+      <%= f.label :sex, "Masculino", :value => 'male' %><br/>
+      <%= f.radio_button :sex, 'female', :checked => (true if @athlete.sex == 'female' ) %>
+      <%= f.label :sex, "Feminino", :value => 'female' %>
+      </fieldset>
+    </div>
+
+    <div class="span1">
+      <%= f.label :national, "Português?" %>
+      <%= f.check_box :national, :checked => (true if @athlete.national == true or !@athlete.national.present? ) %>
+    </div>
+  </div
+<br/><br/>
+  <div class="row">
+    <div class="span6">
+      <%= f.hidden_field :club_id, :value => params[:id] %>
+      <%= f.submit "Gravar", class: "btn btn-sm btn-success" %>
+    </div>
+  </div>
+<% end %>
