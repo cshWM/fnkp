@@ -1,0 +1,42 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Quota</th>
+      <th>Ano</th>
+      <th>Valor</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%
+    # VER COM PMG
+     @list = AssociationFeeIssue.where( :association_id => params[:id])
+
+#     @list.order(short_name: :asc) if params[:orderby] == 'shortasc'
+#     @list.order(short_name: :desc) if params[:orderby] == 'shortdesc'
+#
+#     @clubs.order(region: :asc) if params[:orderby] == 'regionasc'
+#     @clubs.order(region: :desc) if params[:orderby] == 'regiondesc'
+
+     %>
+    <% @list.each do |fee| %>
+      <tr <%= "style='background:#f1f1f1'".html_safe unless fee.active %> >
+        <td><%= AssociationFee.find( fee.association_fee_id).name %></td>
+        <td><%= fee.valid_year %></td>
+        <td><%= fee.value %></td>
+
+        <td>
+          <%= link_to 'V', association_fee_issue, class: "btn btn-group-sm btn-info " %>
+          <%= link_to 'E', edit_association_fee_issue_path(association_fee_issue), class: "btn btn-group-sm btn-success" %>
+          <% if is_admin? %>
+            <%= link_to 'A', association_fee_issue, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+          <% end %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Nova Quota', new_association_fee_issue_path, class: "btn btn-group-sm btn-info " %>

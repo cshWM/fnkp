@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140706204049) do
+ActiveRecord::Schema.define(version: 20140707122754) do
 
   create_table "association_fee_issues", force: true do |t|
-    t.integer  "associationfee_id"
+    t.integer  "association_fee_id"
     t.integer  "association_id"
     t.decimal  "value"
     t.integer  "valid_year"
@@ -22,15 +22,15 @@ ActiveRecord::Schema.define(version: 20140706204049) do
     t.datetime "updated_at"
   end
 
+  add_index "association_fee_issues", ["association_fee_id"], name: "index_association_fee_issues_on_association_fee_id"
   add_index "association_fee_issues", ["association_id"], name: "index_association_fee_issues_on_association_id"
-  add_index "association_fee_issues", ["associationfee_id"], name: "index_association_fee_issues_on_associationfee_id"
 
   create_table "association_fees", force: true do |t|
     t.string   "name"
     t.integer  "valid_year"
     t.boolean  "is_total"
     t.decimal  "value"
-    t.boolean  "valid"
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

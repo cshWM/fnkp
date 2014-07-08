@@ -1,6 +1,6 @@
 class AssociationFeeIssuesController < ApplicationController
   before_action :set_association_fee_issue, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_user,     only: [:new, :index, :show, :edit, :update, :destroy]
+  before_action :admin_user,     only: [:new, :index, :show, :edit, :update, :destroy]
 
 
   # GET /association_fee_issues
@@ -25,12 +25,15 @@ class AssociationFeeIssuesController < ApplicationController
 
   # POST /association_fee_issues
   # POST /association_fee_issues.json
+  #    fee = AssociationFee.find( @association_fee_issue.association_fee_id )
+#    @association_fee_issue.value = fee.value
+#    @association_fee_issue.valid_year = fee.valid_year
   def create
     @association_fee_issue = AssociationFeeIssue.new(association_fee_issue_params)
 
     respond_to do |format|
       if @association_fee_issue.save
-        format.html { redirect_to @association_fee_issue, notice: 'Association fee issue was successfully created.' }
+        format.html { redirect_to @association_fee_issue, notice: 'Quota de Associação criada com sucesso' }
         format.json { render action: 'show', status: :created, location: @association_fee_issue }
       else
         format.html { render action: 'new' }
@@ -43,8 +46,12 @@ class AssociationFeeIssuesController < ApplicationController
   # PATCH/PUT /association_fee_issues/1.json
   def update
     respond_to do |format|
-      if @association_fee_issue.update(association_fee_issue_params)
-        format.html { redirect_to @association_fee_issue, notice: 'Association fee issue was successfully updated.' }
+#    fee = AssociationFee.find( @association_fee_issue.association_fee_id )
+#    @association_fee_issue.value = fee.value
+#    @association_fee_issue.valid_year = fee.valid_year
+
+    if @association_fee_issue.update(association_fee_issue_params)
+        format.html { redirect_to @association_fee_issue, notice: 'Quota Associativa actualizada com sucesso' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -71,6 +78,6 @@ class AssociationFeeIssuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def association_fee_issue_params
-      params.require(:association_fee_issue).permit(:associationfee_id, :association_id, :value, :valid_year)
+      params.require(:association_fee_issue).permit(:association_fee_id, :association_id)
     end
 end

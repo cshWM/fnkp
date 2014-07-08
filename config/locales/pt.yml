@@ -126,8 +126,12 @@ pt:
         club_id: "Clube"
         altered_by: "Alterado por"
 
-      association_fees:
-
+      association_fee:
+        name: "Nome"
+        valid_year: "Ano Validade"
+        is_total: "Total"
+        value: "Valor"
+        active: "Activo"
 
     errors:
       messages:

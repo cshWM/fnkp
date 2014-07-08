@@ -1,16 +1,14 @@
-<h1>Listing association_fees</h1>
+<% provide(:title, 'Quotas Associativas') %>
+<h1>Quotas Associativas</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Valid year</th>
-      <th>Is total</th>
-      <th>Value</th>
-      <th>Valid</th>
-      <th>Has many</th>
-      <th></th>
-      <th></th>
+      <th>Nome</th>
+      <th>Ano Validade</th>
+      <th>Valor</th>
+      <th>Total?</th>
+      <th>Activo</th>
       <th></th>
     </tr>
   </thead>
@@ -20,18 +18,21 @@
       <tr>
         <td><%= association_fee.name %></td>
         <td><%= association_fee.valid_year %></td>
-        <td><%= association_fee.is_total %></td>
         <td><%= association_fee.value %></td>
-        <td><%= association_fee.valid %></td>
-        <td><%= association_fee.has_many %></td>
-        <td><%= link_to 'Show', association_fee %></td>
-        <td><%= link_to 'Edit', edit_association_fee_path(association_fee) %></td>
-        <td><%= link_to 'Destroy', association_fee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= association_fee.is_total %></td>
+        <td><%= association_fee.active %></td>
+        <td>
+          <%= link_to 'Ver', association_fee, class: "btn btn-group-sm btn-info" %>
+          <%= link_to 'Editar', edit_association_fee_path(association_fee), class: "btn btn-group-sm btn-success" %>
+          <%= link_to 'Apagar', association_fee, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<%= will_paginate %>
+
 <br>
 
-<%= link_to 'New Association fee', new_association_fee_path %>
+<%= link_to 'Nova Quota Associativa', new_association_fee_path, class: "btn btn-group-sm btn-success" %>

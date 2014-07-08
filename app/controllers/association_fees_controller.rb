@@ -1,12 +1,12 @@
 class AssociationFeesController < ApplicationController
   before_action :set_association_fee, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_user,     only: [:new, :index, :show, :edit, :update, :destroy]
+  before_action :admin_user,     only: [:new, :index, :show, :edit, :update, :destroy]
 
 
   # GET /association_fees
   # GET /association_fees.json
   def index
-    @association_fees = AssociationFee.all
+    @association_fees = AssociationFee.paginate(page: params[:page], :per_page => 15)
   end
 
   # GET /association_fees/1
@@ -71,6 +71,6 @@ class AssociationFeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def association_fee_params
-      params.require(:association_fee).permit(:name, :valid_year, :is_total, :value, :valid)
+      params.require(:association_fee).permit(:name, :valid_year, :is_total, :value, :active)
     end
 end

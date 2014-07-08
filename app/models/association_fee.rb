@@ -9,6 +9,6 @@ class AssociationFee < ActiveRecord::Base
   validates :is_total, inclusion: { in: [true, false] }
   validates :value, numericality: {greater_than: 0, less_than:10000},
                     allow_blank: false, allow_nil: false
-  validates :valid, inclusion: { in: [true, false] }
+  validates :active, inclusion: { in: [true, false] }
 
 end

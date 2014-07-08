@@ -1,41 +1,30 @@
 <%= form_for(@association_fee) do |f| %>
-  <% if @association_fee.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@association_fee.errors.count, "error") %> prohibited this association_fee from being saved:</h2>
 
-      <ul>
-      <% @association_fee.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <%= render 'shared/error_messages' %>
+
+  <div class="row">
+    <div class="span6 offset3">
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :valid_year %>
+      <%= f.text_field :valid_year %>
+
+      <%= f.label :value %>
+      <%= f.text_field :value %>
+
+      <%= f.label :is_total %>
+      <%= f.check_box :is_total %>
+
+      <%= f.label :active %>
+      <%= f.check_box :active %>
+
+      <br/><br/>
+
+      <%= f.submit "Gravar", class: "btn btn-sm btn-success" %>
     </div>
-  <% end %>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :valid_year %><br>
-    <%= f.number_field :valid_year %>
-  </div>
-  <div class="field">
-    <%= f.label :is_total %><br>
-    <%= f.check_box :is_total %>
-  </div>
-  <div class="field">
-    <%= f.label :value %><br>
-    <%= f.text_field :value %>
-  </div>
-  <div class="field">
-    <%= f.label :valid %><br>
-    <%= f.check_box :valid %>
-  </div>
-  <div class="field">
-    <%= f.label :has_many %><br>
-    <%= f.text_field :has_many %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>

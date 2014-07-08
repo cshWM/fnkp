@@ -1,34 +1,31 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "Quota Associativa: #{@association_fee.name}" ) %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @association_fee.name %>
-</p>
+<%= form_for(@association_fee, :html => { :class => "form-horizontal" }) do |f| %>
+  <%= render 'shared/error_messages' %>
 
-<p>
-  <strong>Valid year:</strong>
-  <%= @association_fee.valid_year %>
-</p>
+  <h1><%= @association_fee.name %></h1>
 
-<p>
-  <strong>Is total:</strong>
-  <%= @association_fee.is_total %>
-</p>
+  <div class="row">
+  <div class="span6 offset3">
 
-<p>
-  <strong>Value:</strong>
-  <%= @association_fee.value %>
-</p>
+    <%= f.label :valid_year %>
+    <%= f.text_field :valid_year, :disabled => 'disabled' %>
 
-<p>
-  <strong>Valid:</strong>
-  <%= @association_fee.valid %>
-</p>
+    <%= f.label :value %>
+    <%= f.text_field :value, :disabled => 'disabled' %>
 
-<p>
-  <strong>Has many:</strong>
-  <%= @association_fee.has_many %>
-</p>
+    <%= f.label :is_total %>
+    <%= f.check_box :is_total, :disabled => 'disabled' %>
 
-<%= link_to 'Edit', edit_association_fee_path(@association_fee) %> |
-<%= link_to 'Back', association_fees_path %>
+    <%= f.label :active %>
+    <%= f.check_box :active, :disabled => 'disabled' %>
+
+    <br/><br/>
+
+    <%= link_to 'Editar', edit_association_fee_path(@association_fee) , class: "btn btn-group-sm btn-info" %>
+    <%= link_to 'Voltar Atrás', association_fees_path, class: "btn btn-group-sm btn-info" %>
+    </div>
+  </div>
+<% end %>
+
+

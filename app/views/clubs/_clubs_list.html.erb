@@ -1,0 +1,39 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= link_to "Sigla" , if params[:orderby] =='shortasc' then '?orderby=shortdesc' else '?orderby=shortasc' end %></th>
+      <th><%= link_to "Região" , if params[:orderby] =='regionasc' then '?orderby=regiondesc' else '?orderby=regionasc' end %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%
+    # VER COM PMG
+     @clubs = Club.where( :association_id => params[:id])
+
+     @clubs.order(short_name: :asc) if params[:orderby] == 'shortasc'
+     @clubs.order(short_name: :desc) if params[:orderby] == 'shortdesc'
+
+     @clubs.order(region: :asc) if params[:orderby] == 'regionasc'
+     @clubs.order(region: :desc) if params[:orderby] == 'regiondesc'
+
+     %>
+    <% @clubs.each do |club| %>
+      <tr <%= "style='background:#f1f1f1'".html_safe unless club.active %> >
+        <td><%= club.short_name %></td>
+        <td><%= Region.find( District.find( Municipality.find( club.municipality_id ).district_id) ).name %></td>
+
+        <td>
+          <%= link_to 'V', club, class: "btn btn-group-sm btn-info " %>
+          <%= link_to 'E', edit_club_path(club), class: "btn btn-group-sm btn-success" %>
+          <% if is_admin? %>
+            <%= link_to 'A', club, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+          <% end %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

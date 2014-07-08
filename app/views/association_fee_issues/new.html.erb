@@ -1,5 +1,10 @@
-<h1>New association_fee_issue</h1>
+<% provide(:title, 'Nova Quota Associativa') %>
+<h1>Nova Quota Associativa</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', association_fee_issues_path %>
+<div class="row">
+  <div class="span6 offset3">
+  <%= link_to 'Voltar Atrás', association_fee_issues_path, class:"btn btn-group-sm btn-info" %>
+  </div>
+</div>
