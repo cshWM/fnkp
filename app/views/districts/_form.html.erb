@@ -1,24 +1,18 @@
 <%= form_for(@district) do |f| %>
 
-  <%= render 'shared/regions_error_messages' %>
+  <%= render 'layouts/inner_error_messages', {:msg => @district} %>
 
-  <div class="row">
-    <div class="span6 offset3">
-
-      <%= f.label :name, "Distrito" %>
+      <%= f.label :name %>
       <%= f.text_field :name %>
 
-      <%= f.label :region_id, "Região" %>
+      <%= f.label :region_id %>
       <%= f.collection_select :region_id, Region.all, :id, :name, {:selected => (@district.region.present? and @district.region.id), :required => true} %>
 
-      <%= f.label :active, "Activo" %>
+      <%= f.label :active %>
       <%= f.check_box :active %>
 
       <br/><br/>
 
-      <%= f.submit "Gravar", class: "btn btn-sm btn-success" %>
-    </div>
-  </div>
-
+      <%= f.submit "Gravar", class: "btn btn-md btn-success" %>
 
 <% end %>

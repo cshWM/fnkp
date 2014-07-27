@@ -1,0 +1,5 @@
+<%
+if msg.present? and msg.errors.count > 0
+  flash[:danger] = msg.errors.full_messages.join('</br>').html_safe
+end
+%>

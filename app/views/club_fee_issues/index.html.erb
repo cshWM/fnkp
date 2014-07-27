@@ -1,0 +1,33 @@
+<h1>Listing club_fee_issues</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Club fee</th>
+      <th>Club</th>
+      <th>Value</th>
+      <th>Valid year</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @club_fee_issues.each do |club_fee_issue| %>
+      <tr>
+        <td><%= club_fee_issue.club_fee %></td>
+        <td><%= club_fee_issue.club %></td>
+        <td><%= club_fee_issue.value %></td>
+        <td><%= club_fee_issue.valid_year %></td>
+        <td><%= link_to 'Show', club_fee_issue %></td>
+        <td><%= link_to 'Edit', edit_club_fee_issue_path(club_fee_issue) %></td>
+        <td><%= link_to 'Destroy', club_fee_issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Club fee issue', new_club_fee_issue_path %>

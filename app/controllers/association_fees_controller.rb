@@ -1,5 +1,6 @@
 class AssociationFeesController < ApplicationController
   before_action :set_association_fee, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user,     only: [:new, :index, :show, :edit, :update, :destroy]
   before_action :admin_user,     only: [:new, :index, :show, :edit, :update, :destroy]
 
 

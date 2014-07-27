@@ -1,10 +1,12 @@
 <% provide(:title, 'Novo Clube') %>
 <h1>Novo Clube</h1>
 
-<%= render 'form' %>
 
-<div class="row">
-  <div class="span6 offset3">
-  <%= link_to 'Voltar Atrás', clubs_path, class: "btn btn-group-sm btn-info" %>
-  </div>
+<div class="form-single">
+  <%= render 'form' %>
+
+  </br>
+
+  <%= link_to '<span class="glyphicon glyphicon-th-list"></span>'.html_safe, clubs_path, class: "btn btn-group-md btn-info", title: 'Voltar Atrás' %>
+
 </div>

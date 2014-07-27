@@ -1,10 +1,11 @@
 <% provide(:title, 'Nova Categoria de Treinador') %>
 <h1>Nova Categoria de Treinador</h1>
 
-<%= render 'form' %>
+<div class="form-single">
+  <%= render 'form' %>
 
-<div class="row">
-  <div class="span6 offset3">
-  <%= link_to 'Voltar Atrás', coach_categories_path, class: "btn btn-group-sm btn-info" %>
-  </div>
+  </br>
+
+  <%= link_to '<span class="glyphicon glyphicon-th-list"></span>'.html_safe, coach_categories_path, class: "btn btn-group-md btn-info", title: 'Voltar Atrás' %>
+
 </div>

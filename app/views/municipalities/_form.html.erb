@@ -1,9 +1,6 @@
 <%= form_for(@municipality) do |f| %>
 
-  <%= render 'shared/regions_error_messages' %>
-
-  <div class="row">
-    <div class="span6 offset3">
+  <%= render 'layouts/inner_error_messages', {:msg => @municipality} %>
 
       <%= f.label :name, "Concelho" %>
       <%= f.text_field :name %>
@@ -16,9 +13,6 @@
 
       <br/><br/>
 
-      <%= f.submit "Gravar", class: "btn btn-sm btn-success" %>
-    </div>
-  </div>
-
+      <%= f.submit "Gravar", class: "btn btn-md btn-success" %>
 
 <% end %>

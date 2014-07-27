@@ -9,6 +9,6 @@ class AssociationFeeIssue < ActiveRecord::Base
 #  validates :value, numericality: {greater_than: 0, less_than:10000},
 #                    allow_blank: false, allow_nil: false
 
-  validates_uniqueness_of :association, :scope => [:association_fee]
+validates_uniqueness_of :association_id, :scope => [:association_fee_id]
 
 end

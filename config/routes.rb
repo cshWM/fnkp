@@ -1,4 +1,9 @@
 FnkpApp::Application.routes.draw do
+  resources :club_fee_issues
+  match '/createCurrentClubFeeIssue',  to: 'club_fee_issues#createCurrent',         via: 'get'
+
+  resources :club_fees
+
   resources :referee_paths
 
   resources :referees

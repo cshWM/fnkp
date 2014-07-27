@@ -1,14 +1,12 @@
 <% if @region.present? and @region.errors.any? %>
-  <div id="error_explanation">
-    <div class="alert alert-error">
+    <div class="alert alert-danger">
       Contém <%= pluralize(@region.errors.count, "erro") %>.
-    </div>
     <ul>
     <% @region.errors.full_messages.each do |msg| %>
       <li>* <%= msg %></li>
     <% end %>
     </ul>
-  </div>
+    </div>
 <% end %>
 
 <% if @district.present? and @district.errors.any? %>

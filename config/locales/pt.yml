@@ -32,6 +32,22 @@ pt:
         password_confirmation: "Confirmação de Password"
         tipo: "Tipo"
 
+      association:
+        name: "Designação"
+        short_name: "Sigla"
+        address: "Endereço"
+        postal4: "Código Postal 4"
+        postal3: "Código Postal 3"
+        city: "Cidade"
+        phone: "Telefone"
+        email: "Email"
+        president: "Presidente"
+        url: "URL"
+        user_id: "Utilizador"
+        altered_by: "Alterado por"
+        updated_at: "Alterado em"
+        active: "Activo"
+
       club:
         name: "Designação"
         short_name: "Sigla"
@@ -132,6 +148,33 @@ pt:
         is_total: "Total"
         value: "Valor"
         active: "Activo"
+
+      club_fee:
+        name: "Nome"
+        valid_year: "Ano Validade"
+        value: "Valor"
+        active: "Activo"
+
+      region:
+        name: "Nome"
+        order: "Ordem"
+        active: "Activo"
+        created_at: "Criado em"
+        updated_at: "Actualizado em"
+
+      district:
+        name: "Nome"
+        active: "Activo"
+        region_id: "Região"
+        created_at: "Criado em"
+        updated_at: "Actualizado em"
+
+      municipality:
+        name: "Nome"
+        active: "Activo"
+        district_id: "Concelho"
+        created_at: "Criado em"
+        updated_at: "Actualizado em"
 
     errors:
       messages:

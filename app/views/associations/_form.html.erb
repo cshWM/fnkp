@@ -1,46 +1,43 @@
 <%= form_for(@association) do |f| %>
-  <%= render 'shared/association_error_messages' %>
+  <%= render 'layouts/inner_error_messages', {:msg => @association} %>
 
-  <div class="row">
-  <div class="span6 offset3">
-
-    <%= f.label :short_name, "Sigla da Associação" %>
+    <%= f.label :short_name %>
     <%= f.text_field :short_name %>
 
-    <%= f.label :name, "Nome da Associação" %>
+    <%= f.label :name %>
     <%= f.text_field :name %>
 
-    <%= f.label :address, "Endereço" %>
+    <%= f.label :address %>
     <%= f.text_field :address %>
 
-    <%= f.label :postal4, "Código Postal (4)" %>
+    <%= f.label :postal4 %>
     <%= f.text_field :postal4 %>
 
-    <%= f.label :postal3, "Código Postal (3)" %>
+    <%= f.label :postal3 %>
     <%= f.text_field :postal3 %>
 
-    <%= f.label :city, "Cidade" %>
+    <%= f.label :city %>
     <%= f.text_field :city %>
 
-    <%= f.label :phone, "Telefone" %>
+    <%= f.label :phone %>
     <%= f.text_field :phone %>
 
     <% if @association.new_record? %>
-        <%= f.label :email, "Email" %>
+        <%= f.label :email %>
         <%= f.text_field :email %>
     <% else %>
-        <%= f.label :email, "Email" %>
+        <%= f.label :email %>
         <%= f.text_field :email, :disabled => 'disabled' %>
     <% end %>
 
-    <%= f.label :president, "Presidente" %>
+    <%= f.label :president %>
     <%= f.text_field :president %>
 
-    <%= f.label :url, "Site Internet" %>
+    <%= f.label :url %>
     <%= f.text_field :url %>
 
+    <br/><br/>
 
-    <%= f.submit "Gravar", class: "btn btn-sm btn-success" %>
-    </div>
-  </div>
+    <%= f.submit "Gravar", class: "btn btn-md btn-success" %>
+
 <% end %>

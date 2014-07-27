@@ -31,11 +31,18 @@ class AssociationFeeIssuesController < ApplicationController
   def create
     @association_fee_issue = AssociationFeeIssue.new(association_fee_issue_params)
 
+
+    render text: @association_fee_issue.valid?.inspect.to_yaml
+    return
     respond_to do |format|
+
+
       if @association_fee_issue.save
+
         format.html { redirect_to @association_fee_issue, notice: 'Quota de Associação criada com sucesso' }
         format.json { render action: 'show', status: :created, location: @association_fee_issue }
       else
+
         format.html { render action: 'new' }
         format.json { render json: @association_fee_issue.errors, status: :unprocessable_entity }
       end

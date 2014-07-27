@@ -1,0 +1,114 @@
+<%# add navigation links to this file %>
+
+<% if signed_in? %>
+  <li><%= link_to "Ajuda", help_path %></li>
+<% end %>
+
+<% if signed_in? %>
+
+    <li id="fat-menu" class="dropdown">
+      <a href="/" class="dropdown-toggle" data-toggle="dropdown">
+        Gestão<b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+      <% if is_admin? %>
+        <li><%= link_to 'Utilizadores', users_path %></li>
+        <li class="divider"></li>
+        <li><%= link_to '<span style="color:red">Requerimentos Pendentes</span>'.html_safe, "#" %></li>
+        <li><%= link_to '<span style="color:red">Requerimentos</span>'.html_safe, "#" %></li>
+        <li><%= link_to '<span style="color:red">Homologações Pendentes</span>'.html_safe, "#" %></li>
+        <li><%= link_to '<span style="color:red">Homologações</span>'.html_safe, "#" %></li>
+      <% end %>
+        <li><%= link_to "Notas de pagamento", orders_path %></li>
+        <li><%= link_to '<span style="color:red">Items sem nota de pagamento</span>'.html_safe, "#" %></li>
+        <li><%= link_to '<span style="color:red">Notas de pagamento sem referência</span>'.html_safe, "#" %></li>
+        <li><%= link_to '<span style="color:red">Notas de pagamento com referência expirada</span>'.html_safe, "#" %></li>
+        <li class="divider"></li>
+        <li><%= link_to '<span style="color:red">Recibos</span>'.html_safe, "#" %></li>
+      </ul>
+    </li>
+
+  <% if is_admin? %>
+    <li id="fat-menu" class="dropdown">
+      <a href="/" class="dropdown-toggle" data-toggle="dropdown">
+        Configuração<b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li><%= link_to "Quotas Associações", association_fees_path %></li>
+        <li><%= link_to "Quotas Clubes", club_fees_path %></li>
+        <li><%= link_to '<span style="color:red">Quotas Praticantes/Treinadores</span>'.html_safe, "#" %></li>
+        <li><%= link_to '<span style="color:red">Quotas Requerimentos</span>'.html_safe, "#" %></li>
+        <li class="divider"></li>
+        <li><%= link_to "Regiões", regions_path %></li>
+        <li><%= link_to "Distritos", districts_path %></li>
+        <li><%= link_to "Concelhos", municipalities_path %></li>
+        <li class="divider"></li>
+        <li><%= link_to "Graduações", graduations_path %></li>
+        <li><%= link_to "Categorias de Árbitro", referee_categories_path %></li>
+        <li><%= link_to "Categorias de Treinador", coach_categories_path %></li>
+      </ul>
+    </li>
+  <% end %>
+
+  <li id="fat-menu" class="dropdown">
+    <a href="/" class="dropdown-toggle" data-toggle="dropdown">
+      Registos<b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to "Associações", associations_path %></li>
+      <li><%= link_to "Clubes", clubs_path %></li>
+      <li><%= link_to "Atletas", athletes_path %></li>
+      <% if is_admin? %>
+        <li><%= link_to "Treinadores", coaches_path %></li>
+      <% else %>
+        <li><%= link_to "Treinadores", "#" %></li>
+      <% end %>
+      <% if is_admin? %>
+        <li><%= link_to "Técnicos Arbitragem", referees_path %></li>
+      <% else %>
+        <li><%= link_to '<span style="color:red">Técnicos Arbitragem</span>'.html_safe, "#" %></li>
+      <% end %>
+    </ul>
+  </li>
+
+  <li id="fat-menu" class="dropdown">
+    <a href="/" class="dropdown-toggle" data-toggle="dropdown">
+      Competição <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to '<span style="color:red">Nova competição</span>'.html_safe, "#"%></li>
+      <li><%= link_to '<span style="color:red">Competições</span>'.html_safe, "#"%></li>
+      <li class="divider"></li>
+      <li><%= link_to "Sportdata", "http://www.sportdata.org/karate/"%></li>
+    </ul>
+  </li>
+
+  <li id="fat-menu" class="dropdown">
+    <a href="/" class="dropdown-toggle" data-toggle="dropdown">
+      Formação <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to '<span style="color:red">Novo Curso</span>'.html_safe, "#"%></li>
+      <li><%= link_to '<span style="color:red">Cursos</span>'.html_safe, "#"%></li>
+      <li class="divider"></li>
+      <li><%= link_to "Moodle", "http://moodle.fnkp.pt/moodle/"%></li>
+    </ul>
+  </li>
+
+
+  <li id="fat-menu" class="dropdown">
+    <a href="/" class="dropdown-toggle" data-toggle="dropdown">
+      Perfil <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to "Perfil", current_user %></li>
+      <li><%= link_to "Definições", edit_user_path(current_user) %></li>
+      <li class="divider"></li>
+      <li>
+        <%= link_to '<span class="glyphicon glyphicon-off"></span> Sair'.html_safe, signout_path, method: "delete" %>
+      </li>
+    </ul>
+  </li>
+<% else %>
+  <li><%= link_to "Entrar", signin_path %></li>
+<% end %>

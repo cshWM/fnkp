@@ -1,0 +1,19 @@
+<%= form_for(@club_fee_issue) do |f| %>
+
+  <%= render 'shared/error_messages' %>
+
+  <div class="row">
+    <div class="span6 offset3">
+
+      <%= f.label :club_id %>
+      <%= f.collection_select :club_id, Club.all, :id, :name, {:selected => (@club_fee_issue.club_id.present? and @club_fee_issue.club_id), :required => true} %>
+
+      <%= f.label :club_fee_id %>
+      <%= f.collection_select :club_fee_id, ClubFee.all, :id, :name, {:selected => (@club_fee_issue.club_fee_id.present? and @club_fee_issue.club_fee_id), :required => true} %>
+
+      <br/><br/>
+
+      <%= f.submit "Gravar", class: "btn btn-md btn-success" %>
+    </div>
+  </div>
+<% end %>

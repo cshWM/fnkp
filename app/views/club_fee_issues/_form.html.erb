@@ -1,0 +1,33 @@
+<%= form_for(@club_fee_issue) do |f| %>
+  <% if @club_fee_issue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@club_fee_issue.errors.count, "error") %> prohibited this club_fee_issue from being saved:</h2>
+
+      <ul>
+      <% @club_fee_issue.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :club_fee_id %><br>
+    <%= f.text_field :club_fee_id %>
+  </div>
+  <div class="field">
+    <%= f.label :club_id %><br>
+    <%= f.text_field :club_id %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br>
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :valid_year %><br>
+    <%= f.number_field :valid_year %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

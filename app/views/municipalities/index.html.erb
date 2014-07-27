@@ -16,12 +16,14 @@
       <tr>
         <td><%= municipality.name %></td>
         <td><%= municipality.district.name %></td>
-        <td><%= municipality.active %></td>
-
         <td>
-          <%= link_to 'Ver', municipality, class: "btn btn-group-sm btn-info" %>
-          <%= link_to 'Editar', edit_municipality_path(municipality), class: "btn btn-group-sm btn-success" %>
-          <% # link_to 'Apagar', district, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+            <span class="glyphicon glyphicon-ok" style="color:<%= municipality.active ? "green" : "red" %>"></span>
+        </td>
+
+        <td class="tabButtons">
+          <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, municipality, class: "btn btn-group-md btn-info", title: "Ver" %>
+          <%= link_to "<span class='glyphicon glyphicon-edit'></span>".html_safe, edit_municipality_path(municipality), class: "btn btn-group-md btn-success", title: "Editar" %>
+          <%# link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, district, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-md btn-danger", title: "Apagar" %>
         </td>
 
       </tr>
@@ -33,4 +35,4 @@
 
 <br>
 
-<%= link_to 'Novo Concelho', new_municipality_path, class: "btn btn-group-sm btn-success" %>
+<%= link_to '<span class="glyphicon glyphicon-plus"></span> Novo Concelho'.html_safe, new_municipality_path, class: "btn btn-group-md btn-success", title: "Novo Concelho" %>

@@ -1,16 +1,17 @@
+// @import "bootstrap-sprockets";
 @import "bootstrap";
 
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
 
-//$black: #000;
-//$grayDarker: #222;
-//$grayDark: #333;
-//$gray: #555;
-//$grayLight: #999;
-//$grayLighter: #eee;
-//$white: #fff;
+$black: #000;
+$grayDarker: #222;
+$grayDark: #333;
+$gray: #555;
+$grayLight: #999;
+$grayLighter: #eee;
+$white: #fff;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -168,7 +169,7 @@ label {
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
   @include box_sizing;
 }
 
@@ -216,4 +217,55 @@ input {
       border-bottom: 1px solid $grayLighter;
     }
   }
+}
+
+
+
+.apple_pagination {
+  background: #f1f1f1;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  padding: 1em;
+  cursor: default;
+  li {  list-style: none;  }
+  width: 100%;
+}
+
+.apple_pagination a {
+  float: left;
+}
+
+.apple_pagination a, .apple_pagination span {
+  padding: 0.2em 0.3em;
+}
+
+.apple_pagination .disabled {
+  color: #aaaaaa;
+}
+
+.apple_pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  background-color: #bebebe;
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  line-height: 1.5;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;
+}
+
+.apple_pagination a {
+  text-decoration: none;
+  color: black;
+}
+
+.apple_pagination a:hover, .apple_pagination a:focus {
+  text-decoration: underline;
+}
+
+.tabButtons {
+  text-align:right !important; white-space:nowrap;
 }

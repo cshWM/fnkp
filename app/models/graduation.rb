@@ -1,5 +1,5 @@
 class Graduation < ActiveRecord::Base
-  default_scope -> { order('order ASC') }
+  default_scope -> { order(order: :asc) }
 
   validates :name, length: { maximum: 50 }, presence: true,
                   uniqueness: { case_sensitive: false,

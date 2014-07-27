@@ -1,0 +1,21 @@
+<%= form_for(@club_fee) do |f| %>
+
+  <%= render 'layouts/inner_error_messages', {:msg => @district} %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :valid_year %>
+      <%= f.text_field :valid_year %>
+
+      <%= f.label :value %>
+      <%= f.text_field :value %>
+
+      <%= f.label :active %>
+      <%= f.check_box :active %>
+
+      <br/><br/>
+
+      <%= f.submit "Gravar", class: "btn btn-md btn-success" %>
+
+<% end %>

@@ -2,11 +2,10 @@
 
 <h1>Editar Associação</h1>
 
-<%= render 'form' %>
+<div class="form-single">
+  <%= render 'form' %>
+</br>
 
-<div class="row">
-  <div class="span6 offset3">
-  <%= link_to 'Ver', @association, class: "btn btn-group-sm btn-info" %>
-  <%= link_to 'Voltar Atrás', association_path, class: "btn btn-group-sm btn-info" %>
-  </div>
+  <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, @association, class: "btn btn-group-md btn-info", title: "Ver" %>
+  <%= link_to '<span class="glyphicon glyphicon-th-list"></span>'.html_safe, association_path, class: "btn btn-group-md btn-info", title: 'Voltar Atrás' %>
 </div>

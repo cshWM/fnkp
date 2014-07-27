@@ -16,12 +16,14 @@
       <tr>
         <td><%= region.name %></td>
         <td><%= region.order %></td>
-        <td><%= region.active %></td>
-
         <td>
-          <%= link_to 'Ver', region, class: "btn btn-group-sm btn-info" %>
-          <%= link_to 'Editar', edit_region_path(region), class: "btn btn-group-sm btn-success" %>
-          <%# link_to 'Apagar', region, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+            <span class="glyphicon glyphicon-ok" style="color:<%= region.active ? "green" : "red" %>"></span>
+        </td>
+
+        <td class="tabButtons">
+          <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, region, class: "btn btn-group-md btn-info", title: "Ver" %>
+          <%= link_to "<span class='glyphicon glyphicon-edit'></span>".html_safe, edit_region_path(region), class: "btn btn-group-md btn-success", title: "Editar" %>
+          <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, region, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-md btn-danger", title: "Apagar" %>
         </td>
 
       </tr>
@@ -29,8 +31,14 @@
   </tbody>
 </table>
 
+
 <%= will_paginate %>
 
 <br>
 
-<%= link_to 'Nova Região', new_region_path, class: "btn btn-group-sm btn-success" %>
+<%= link_to '<span class="glyphicon glyphicon-plus"></span> Nova Região'.html_safe, new_region_path, class: "btn btn-group-md btn-success", title: "Nova Região" %>
+
+</br>
+</br>
+</br>
+<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>

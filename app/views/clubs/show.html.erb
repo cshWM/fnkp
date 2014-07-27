@@ -1,13 +1,14 @@
 
 <% provide(:title, "Clube: #{@club.short_name}" ) %>
 
-<%= form_for(@club, :html => { :class => "form-horizontal" }) do |f| %>
-  <%= render 'shared/error_messages' %>
+  <%= render 'layouts/inner_error_messages', {:msg => @club} %>
 
   <h1><%= @club.short_name %></h1>
 
-  <div class="row">
-  <div class="span6 ">
+  <div class="form" style="display:block;">
+
+<%= form_for(@club, :html => { :class => "form-horizontal" }) do |f| %>
+  <div class="form-left">
 
     <%= f.label :name %>
     <%= f.text_field :name, :disabled => 'disabled' %>
@@ -45,13 +46,75 @@
 
     <br/><br/>
 
-    <%= link_to 'Editar', edit_club_path(@club), class: "btn btn-group-sm btn-info" %>
-    <%= link_to 'Voltar Atrás', clubs_path, class: "btn btn-group-sm btn-info" %>
+    <%= link_to "<span class='glyphicon glyphicon-edit'></span>".html_safe, edit_club_path(@club), class: "btn btn-group-md btn-success", title: "Editar" %>
+    <%= link_to '<span class="glyphicon glyphicon-th-list"></span>'.html_safe, clubs_path, class: "btn btn-group-md btn-info", title: 'Voltar Atrás' %>
     </div>
+<% end %>
 
-     <div class="span6 ">
+     <div class="form-right">
       <%= render 'athletes/shortform' %>
-      <%= render 'athletes/athletes_list' %>
+
+      <br/>
+
+        <div class="panel-group" id="accordion">
+
+          <%
+          if params[:qnameasc] or params[:qnamedesc]
+            open1 = ""
+            open2 = ""
+            open3 = ""
+          end
+          if params[:qnameasc] or params[:qnamedesc]
+            open1 = ""
+            open2 = ""
+            open3 = ""
+          end
+          %>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                  Atletas <span class="badge"><%= @atletas.count %></span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse fade in">
+              <div class="panel-body bs-callout bs-callout-warning" style="padding:5px;">
+                <%= render 'athletes/athletes_list' %>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                  Treinadores <span class="badge">1</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse ">
+              <div class="panel-body">
+                bla bla
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                  Quotas <span class="badge" style="background-color:red"><%= @club_fees.count %></span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse ">
+              <div class="panel-body">
+                <%= render 'club_fee_issues/club_fee_list' %>
+              </div>
+            </div>
+          </div>
+
+        </div>
      </div>
   </div>
-<% end %>

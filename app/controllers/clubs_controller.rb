@@ -24,9 +24,38 @@ class ClubsController < ApplicationController
         @club = Club.where( "id = :cid and association_id = :aid",
             { cid: params[ :id ], aid: my_association } ).first
       elsif is_club?
-        @club = Club.find_by( club_id: current_user.id )
+        @club = Club.find_by( club_id: current_user.id ) #CSH
       end
     end
+
+    @athlete = Athlete.new(club_id: params[:id])
+    @atletas = Athlete.where(club_id: params[:id])
+
+    @atletas = @atletas.order(active: :desc, short_name: :asc) if params[:orderby] == 'nameasc'
+    @atletas = @atletas.order(active: :desc, short_name: :desc) if params[:orderby] == 'namedesc'
+
+    @atletas = @atletas.order(active: :desc, fnkp_code: :asc) if params[:orderby] == 'fnkpasc'
+    @atletas = @atletas.order(active: :desc, fnkp_code: :desc) if params[:orderby] == 'fnkpdesc'
+
+    @atletas = @atletas.order(active: :desc, sex: :asc) if params[:orderby] == 'sexasc'
+    @atletas = @atletas.order(active: :desc, sex: :desc) if params[:orderby] == 'sexdesc'
+
+    @atletas = @atletas.order(active: :desc, birthdate: :asc) if params[:orderby] == 'dtasc'
+    @atletas = @atletas.order(active: :desc, birthdate: :desc) if params[:orderby] == 'dtdesc'
+
+    @atletas = @atletas.order(active: :desc, fnkp_code: :desc) unless params[:orderby]
+
+
+
+
+    @club_fees = ClubFeeIssue.where( club_id: params[:id])
+
+    @club_fees = @club_fees.order(name: :asc) if params[:orderby] == 'qnameasc'
+    @club_fees = @club_fees.order(name: :desc) if params[:orderby] == 'qnamedesc'
+
+    @club_fee_current = ClubFee.find_by( valid_year: Date.today.year, active: true )
+    @club_is_current = @club_fees.find_by_club_fee_id_and_club_id( @club_fee_current, params[:id] )
+
   end
 
   # GET /clubs/new
@@ -132,6 +161,7 @@ class ClubsController < ApplicationController
   def destroy
     @club.destroy
     respond_to do |format|
+      flash[:notice] = 'Clube foi apagado com sucesso.'
       format.html { redirect_to clubs_url }
       format.json { head :no_content }
     end

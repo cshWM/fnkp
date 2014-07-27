@@ -1,24 +1,18 @@
 <%= form_for(@region) do |f| %>
 
-  <%= render 'shared/regions_error_messages' %>
+  <%= render 'layouts/inner_error_messages', {:msg => @region} %>
 
-  <div class="row">
-    <div class="span6 offset3">
+  <%= f.label :name, "Região" %>
+  <%= f.text_field :name %>
 
-      <%= f.label :name, "Região" %>
-      <%= f.text_field :name %>
+  <%= f.label :order, "Ordem" %>
+  <%= f.text_field :order %>
 
-      <%= f.label :order, "Ordem" %>
-      <%= f.text_field :order %>
+  <%= f.label :active, "Activo" %>
+  <%= f.check_box :active %>
 
-      <%= f.label :active, "Activo" %>
-      <%= f.check_box :active %>
+  <br/><br/>
 
-      <br/><br/>
-
-      <%= f.submit "Gravar", class: "btn btn-sm btn-success" %>
-    </div>
-  </div>
-
+  <%= f.submit "Gravar", class: "btn btn-md btn-success" %>
 
 <% end %>

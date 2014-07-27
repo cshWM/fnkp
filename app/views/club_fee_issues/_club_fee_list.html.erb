@@ -1,0 +1,44 @@
+<% if @club_fees.count > 0 %>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="col-md-3">Quota</th>
+      <th class="col-md-3">Data</th>
+      <th class="col-md-1">Estado</th>
+      <% if is_admin? %>
+        <th class="col-md-3"></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @club_fees.each do |issue| %>
+      <tr>
+        <td><%= ClubFee.find( issue.club_fee_id ).name %></td>
+        <td><%= issue.created_at.to_s[0..10] %></td>
+        <td><span class="1glyphicon 1glyphicon-euro" style="color:green" title="Pago"> Pago</span></td>
+        <td>
+          <nobr>
+          <% if is_admin? %>
+            <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, issue, class: "btn btn-info btn-group-xxs", title: "Ver" %>
+            <%= link_to "<span class='glyphicon glyphicon-edit'></span>".html_safe, edit_club_fee_issue_path(issue), class: "btn btn-success btn-group-xxs", title: "Editar" %>
+            <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, club_fee_issue_path( issue.id ) + "?clubdetail=1", method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-danger btn-group-xxs", title: "Apagar" %>
+          <% end %>
+        </nobr>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+Sem quotas de clube.
+<% end %>
+
+</br>
+<% if @club_is_current.present? %>
+  Já tem a quota actual criada.
+<% else %>
+  <%= link_to 'Criar Quota Actual', "/createCurrentClubFeeIssue?club_id=#{@club.id}&club_fee_id=#{@club_fee_current.id}&clubdetail=1", class: "btn btn-group-sm btn-info" %>
+<% end %>

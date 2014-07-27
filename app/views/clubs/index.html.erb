@@ -1,7 +1,6 @@
 <% provide(:title, 'Clubes') %>
 <h1>Clubes</h1>
 
-<%= puts "!!!!!!!!!!!!!#{@clubs.length}========" %>
 <% if @clubs.length > 0 %>
   <table class="table">
     <thead>
@@ -20,13 +19,11 @@
           <td><%= club.name %></td>
           <td><%= Municipality.find( club.municipality_id).name %></td>
 
-          <td>
-            <%= link_to 'Ver', club, class: "btn btn-group-sm btn-info" %>
-            <%= link_to 'Editar', edit_club_path(club), class: "btn btn-group-sm btn-success" %>
-            <% if is_admin? %>
-              <%= link_to 'Apagar', club, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
-            <% end %>
-          </td>
+          <td class="tabButtons">
+          <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, club, class: "btn btn-group-md btn-info", title: "Ver" %>
+          <%= link_to "<span class='glyphicon glyphicon-edit'></span>".html_safe, edit_club_path(club), class: "btn btn-group-md btn-success", title: "Editar" %>
+          <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, club, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-md btn-danger", title: "Apagar" %>
+        </td>
 
         </tr>
       <% end %>
@@ -45,5 +42,5 @@
 
 <br>
 <% if is_association? %>
-  <%= link_to 'Novo Clube', new_club_path, class: "btn btn-group-sm btn-success" %>
+  <%= link_to '<span class="glyphicon glyphicon-plus"></span> Novo Clube'.html_safe, new_club_path, class: "btn btn-group-md btn-success", title: "Novo clube" %>
 <% end %>

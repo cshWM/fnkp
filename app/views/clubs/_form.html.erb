@@ -1,8 +1,5 @@
 <%= form_for(@club) do |f| %>
-  <%= render 'shared/error_messages' %>
-
-  <div class="row">
-  <div class="span6 offset3">
+  <%= render 'layouts/inner_error_messages', {:msg => @club} %>
 
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -63,7 +60,6 @@
     <% end %>
 
     <br/><br/>
-    <%= f.submit "Gravar", class: "btn btn-sm btn-success" %>
-    </div>
-  </div>
+    <%= f.submit "Gravar", class: "btn btn-md btn-success" %>
+
 <% end %>

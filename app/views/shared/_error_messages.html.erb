@@ -117,6 +117,32 @@
   </div>
 <% end %>
 
+<% if @club_fee.present? and @club_fee.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@club_fee.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @club_fee.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @club_fee_issue.present? and @club_fee_issue.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@club_fee_issue.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @club_fee_issue.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <% if @athlete.present? and @athlete.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
@@ -130,3 +156,43 @@
   </div>
 <% end %>
 
+<% if @association.present? and @association.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@association.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @association.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<% if @association_fee.present? and @association_fee.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@association_fee.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @association_fee.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<% if @association_fee_issue.present? and @association_fee_issue.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Contém <%= pluralize(@association_fee_issue.errors.count, "erro") %>.
+    </div>
+    <ul>
+    <% @association_fee_issue.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

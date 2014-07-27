@@ -1,5 +1,3 @@
-<h2>Atletas</h2>
-
 <table class="table">
   <thead>
     <tr>
@@ -12,23 +10,6 @@
   </thead>
 
   <tbody>
-    <%
-    # VER COM PMG
-     @atletas = Athlete.where( :club_id => params[:id])
-
-     @atletas.order(short_name: :asc) if params[:orderby] == 'nameasc'
-     @atletas.order(short_name: :desc) if params[:orderby] == 'namedesc'
-
-     @atletas.order(fnkp_code: :asc) if params[:orderby] == 'fnkpasc'
-     @atletas.order(fnkp_code: :desc) if params[:orderby] == 'fnkpdesc'
-
-     @atletas.order(sex: :asc) if params[:orderby] == 'sexasc'
-     @atletas.order(sex: :desc) if params[:orderby] == 'sexdesc'
-
-     @atletas.order(birthdate: :asc) if params[:orderby] == 'dtasc'
-     @atletas.order(birthdate: :desc) if params[:orderby] == 'dtdesc'
-
-     %>
     <% @atletas.each do |athlete| %>
       <tr <%= "style='background:#f1f1f1'".html_safe unless athlete.active %> >
         <td><%= link_to athlete.fnkp_code, athlete, class: "btn btn-group-sm btn-info" %></td>
@@ -37,11 +18,12 @@
         <td><%= athlete.birthdate %></td>
 
         <td>
-
-          <%= link_to 'E', edit_athlete_path(athlete), class: "btn btn-group-sm btn-success" %>
+          <nobr>
+          <%= link_to "<span class='glyphicon glyphicon-edit'></span>".html_safe, edit_athlete_path(athlete) + "?clubdetail=1", class: "btn btn-success btn-group-xxs", title: "Editar" %>
           <% if is_admin? %>
-            <%= link_to 'A', athlete, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-sm btn-danger" %>
+            <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, athlete_path( athlete.id ) + "?clubdetail=1", method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-danger btn-group-xxs", title: "Apagar" %>
           <% end %>
+          </nobr>
         </td>
 
       </tr>

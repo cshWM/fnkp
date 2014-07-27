@@ -1,56 +1,59 @@
 <% provide(:title, @association.short_name) %>
 
+<div class="form" style="display:block;">
 <%= form_for(@association, :html => { :class => "form-horizontal" }) do |f| %>
-  <%= render 'shared/association_error_messages' %>
+  <%= render 'layouts/inner_error_messages', {:msg => @association} %>
 
   <h1><%= @association.short_name %></h1>
 
-  <div class="row">
-      <div class="span6">
 
-        <%= f.label :name, "Nome da Associação" %>
+    <div class="form-left">
+
+        <%= f.label :name %>
         <%= f.text_field :name, :disabled => 'disabled' %>
 
-        <%= f.label :address, "Endereço" %>
+        <%= f.label :address %>
         <%= f.text_field :address, :disabled => 'disabled' %>
 
         <div class="form-group ">
-            <div class="col-md-1">
-            <%= f.label :postal4, "Código Postal (4)", :class => "control-label" %>
+            <div class="col-md-2">
+            <%= f.label :postal4, :class => "control-label" %>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
             <%= f.text_field :postal4, :disabled => 'disabled', :style => "width: 50px; margin-left: 5px; margin-right: 5px;" %>
             </div>
-            <div class="col-md-1">
-            <%= f.label :postal3, "Código Postal (3)", :class => "control-label" %>
+            <div class="col-md-2">
+            <%= f.label :postal3, :class => "control-label" %>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
             <%= f.text_field :postal3, :disabled => 'disabled', :style => "width: 50px; margin-left: 5px; margin-right: 5px;" %>
             </div>
         </div>
 
 
-        <%= f.label :city, "Cidade" %>
+        <%= f.label :city %>
         <%= f.text_field :city, :disabled => 'disabled' %>
 
-        <%= f.label :phone, "Telefone" %>
+        <%= f.label :phone %>
         <%= f.text_field :phone, :disabled => 'disabled' %>
 
-        <%= f.label :email, "Email" %>
+        <%= f.label :email %>
         <%= f.text_field :email, :disabled => 'disabled' %>
 
-        <%= f.label :president, "Presidente" %>
+        <%= f.label :president %>
         <%= f.text_field :president, :disabled => 'disabled' %>
 
-        <%= f.label :url, "Site Internet" %>
+        <%= f.label :url %>
         <%= f.text_field :url, :disabled => 'disabled' %>
 
     <br/><br/>
-        <%= link_to 'Editar', edit_association_path(@association), class: "btn btn-group-sm btn-info" %>
-        <%# link_to 'Voltar Atrás', associations_path, class: "btn btn-group-sm btn-info" %>
-        </div>
 
-  <div class="span6">
+    <%= link_to "<span class='glyphicon glyphicon-edit'></span>".html_safe, edit_association_path(@association), class: "btn btn-group-md btn-success", title: "Editar" %>
+    <%= link_to '<span class="glyphicon glyphicon-th-list"></span>'.html_safe, associations_path, class: "btn btn-group-md btn-info", title: 'Voltar Atrás' %>
+
+  </div>
+
+  <div class="form-right">
 
     <div class="panel-group" id="accordion">
 
@@ -58,26 +61,26 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-              Quotas Associativas [ <%= AssociationFeeIssue.where( :association_id => @association.id ).count %> ]
+              Quotas Associativas <span class="badge"><%= AssociationFeeIssue.where( :association_id => @association.id ).count %></span>
             </a>
           </h4>
         </div>
-        <div id="collapseOne" class="panel-collapse fade in">
+        <div id="collapseOne" class="panel-collapse collapse">
           <div class="panel-body bs-callout bs-callout-warning">
             <%= render 'association_fee_issues/association_fee_list' %>
           </div>
         </div>
       </div>
 
-      <div class="panel ">
+      <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-              Clubes [ <%= @association.clubs.count %> ]
+              Clubes <span class="badge"><%= @association.clubs.count %></span>
             </a>
           </h4>
         </div>
-        <div id="collapseTwo" class="panel-collapse fade">
+        <div id="collapseTwo" class="panel-collapse collapse">
           <div class="panel-body">
             <%= render 'clubs/clubs_list' %>
           </div>
@@ -87,7 +90,7 @@
     </div>
 
   </div>
-  </div>
+</div>
 <% end %>
 
 

@@ -1,11 +1,10 @@
 <% provide(:title, 'Editar Categoria de Treinador') %>
 <h1>Editar Categoria de Treinador</h1>
 
-<%= render 'form' %>
+<div class="form-single">
+  <%= render 'form' %>
+</br>
 
-<div class="row">
-  <div class="span6 offset3">
-  <%= link_to 'Ver', @coach_category, class: "btn btn-group-sm btn-info" %>
-  <%= link_to 'Voltar Atrás', coach_categories_path, class: "btn btn-group-sm btn-info" %>
-  </div>
+  <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, @coach_category, class: "btn btn-group-md btn-info", title: "Ver" %>
+  <%= link_to '<span class="glyphicon glyphicon-th-list"></span>'.html_safe, coach_categories_path, class: "btn btn-group-md btn-info", title: 'Voltar Atrás' %>
 </div>

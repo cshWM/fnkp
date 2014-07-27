@@ -35,15 +35,30 @@ class AthletesController < ApplicationController
     @athlete.is_current = false
     name = @athlete.name.split(' ')
     @athlete.short_name = "#{name.first} #{name.last}" if name.length > 1
-    @athlete.short_name = "#{name.first}" if name.length = 1
+    @athlete.short_name = "#{name.first}" if name.length == 1
+
 
     respond_to do |format|
       if @athlete.save
-        format.html { redirect_to @athlete, notice: 'Atleta criado com sucesso.' }
-        format.json { render action: 'show', status: :created, location: @athlete }
+        if params[ :shortform ]
+          @athlete = Athlete.new(club_id: @athlete.club_id)
+          @club = Club.find( @athlete.club_id )
+          #flash[:notice] = "Atleta inserido com sucesso"
+          #format.html { render 'clubs/show' }
+          format.html { redirect_to club_path(@athlete.club_id), notice: 'Atleta criado com sucesso.' }
+        else
+          format.html { redirect_to @athlete, notice: 'Atleta criado com sucesso.' }
+          format.json { render action: 'show', status: :created, location: @athlete }
+        end
       else
-        format.html { render action: 'new' }
-        format.json { render json: @athlete.errors, status: :unprocessable_entity }
+        if params[ :shortform ]
+          @club = Club.find( @athlete.club_id )
+          flash[:error] = @athlete.errors.full_messages.join(".<br>").html_safe
+          format.html { redirect_to club_path(@athlete.club_id) }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @athlete.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -57,11 +72,23 @@ class AthletesController < ApplicationController
     @athlete.short_name = "#{namesplit.first}" if namesplit.length == 1
 
     respond_to do |format|
+
       if @athlete.update(athlete_params)
-        format.html { redirect_to @athlete, notice: 'Atleta actualizado com sucesso.' }
+        if params[ :shortform ] or params[ :clubdetail ]
+          @club = Club.find( @athlete.club_id )
+          format.html { redirect_to club_path(@athlete.club_id), notice: 'Atleta criado com sucesso.' }
+        else
+          format.html { redirect_to @athlete, notice: 'Atleta actualizado com sucesso.' }
+        end
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        if params[ :shortform ] or params[ :clubdetail ]
+          @club = Club.find( @athlete.club_id )
+          flash[:error] = @athlete.errors.full_messages.join(".<br>").html_safe
+          format.html { redirect_to club_path(@athlete.club_id) }
+        else
+          format.html { render action: 'edit' }
+        end
         format.json { render json: @athlete.errors, status: :unprocessable_entity }
       end
     end
@@ -70,9 +97,15 @@ class AthletesController < ApplicationController
   # DELETE /athletes/1
   # DELETE /athletes/1.json
   def destroy
-    @athlete.destroy
+    # @athlete.destroy
+    @athlete.active = false;
+    @athlete.save;
     respond_to do |format|
-      format.html { redirect_to athletes_url }
+      if params[ :clubdetail ]
+        format.html { redirect_to club_url( @athlete.club_id ) }
+      else
+        format.html { redirect_to athletes_url }
+      end
       format.json { head :no_content }
     end
   end

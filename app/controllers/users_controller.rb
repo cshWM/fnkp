@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "Utilizador actualizado com sucesso."
+      flash[:notice] = "Utilizador actualizado com sucesso."
       redirect_to @user
     else
       render 'edit'
@@ -73,7 +73,7 @@ class UsersController < ApplicationController
 
     unless @association
       @user.destroy
-      flash[:success] = "Utilizador removido com sucesso."
+      flash[:notice] = "Utilizador removido com sucesso."
       redirect_to users_url
     else
       flash[:error] = "O utilizador tem uma associação associada, pelo que não pode ser removido."

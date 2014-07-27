@@ -1,0 +1,27 @@
+<% provide(:title, "Quota Clube: #{@club_fee.name}" ) %>
+
+<%= form_for(@club_fee, :html => { :class => "form-horizontal" }) do |f| %>
+  <%= render 'layouts/inner_error_messages', {:msg => @club_fee} %>
+
+  <h1><%= @club_fee.name %></h1>
+
+  <div class="form-single">
+
+    <%= f.label :valid_year %>
+    <%= f.text_field :valid_year, :disabled => 'disabled' %>
+
+    <%= f.label :value %>
+    <%= f.text_field :value, :disabled => 'disabled' %>
+
+    <%= f.label :active %>
+    <%= f.check_box :active, :disabled => 'disabled' %>
+
+    <br/><br/>
+
+    <%= link_to "<span class='glyphicon glyphicon-edit'></span>".html_safe, edit_club_fee_path(@club_fee), class: "btn btn-group-md btn-success", title: "Editar" %>
+    <%= link_to '<span class="glyphicon glyphicon-th-list"></span>'.html_safe, club_fees_path, class: "btn btn-group-md btn-info", title: 'Voltar Atrás' %>
+
+  </div>
+<% end %>
+
+

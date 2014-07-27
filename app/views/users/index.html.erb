@@ -18,14 +18,15 @@
         <td><%= user.email %></td>
         <td><%= user.tipo %></td>
         <td>
-          <%= link_to 'Ver', user, class: "btn btn-group-sm btn-info" %>
+          <nobr>
+          <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, user, class: "btn btn-group-md btn-info", title: "Ver" %>
           <% if is_admin? %>
-          <%= link_to 'Editar', edit_user_path(user), class: "btn btn-group-sm btn-success" %>
+            <%= link_to "<span class='glyphicon glyphicon-edit'></span>".html_safe, edit_user_path(user), class: "btn btn-group-md btn-success", title: "Editar" %>
           <% end %>
           <% if is_admin? && !current_user?(user) %>
-          <%= link_to 'Apagar', user, method: :delete, data: { confirm: 'Tem a certeza?' },
-                  class: "btn btn-group-sm btn-danger" %>
+            <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, user, method: :delete, data: { confirm: 'Tem a certeza?' }, class: "btn btn-group-md btn-danger", title: "Apagar" %>
           <% end %>
+          </nobr>
         </td>
       </tr>
     <% end %>
@@ -36,4 +37,4 @@
 
 <br>
 
-<%= link_to 'Novo Utilizador', new_user_path, class: "btn btn-group-sm btn-success" %>
+<%= link_to '<span class="glyphicon glyphicon-plus"></span> Nova Região'.html_safe, new_user_path, class: "btn btn-group-md btn-success", title: "Nova Região" %>
